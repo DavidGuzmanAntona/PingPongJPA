@@ -1,7 +1,10 @@
 package entidades;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +39,9 @@ public class Competicion {
 	@OneToMany(mappedBy = "competicion")
 	private List<Equipo> equipos;
 
+	@OneToMany(mappedBy = "competicion", cascade = CascadeType.ALL)
+    private List<Jornada> jornadas= new ArrayList<Jornada>();
+	
 //Constructores
 public Competicion() {
 	super();
@@ -99,6 +105,13 @@ public void setEquipos(List<Equipo> equipos) {
 public Long getIdCompeticion() {
 	return idCompeticion;
 }
+public List<Jornada> getJornadas() {
+	return jornadas;
+}
+
+public void setJornadas(List<Jornada> jornadas) {
+	this.jornadas = jornadas;
+}
 
 //toString
 @Override
@@ -109,9 +122,6 @@ public String toString() {
 
 
 
-	
-
-	
 	
 	
 }
