@@ -8,6 +8,7 @@ import entidades.Competicion;
 import entidades.Equipo;
 import entidades.Jornada;
 import entidades.Jugador;
+import entidades.Partido;
 import entidades.Patrocinador;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -115,16 +116,31 @@ public class SimulacionMain {
 		equipo5.setPatrocinador(patrocinio5);
 		
 		// Crear una jornada
-        Jornada jornada = new Jornada("Primera Jornada");
-        jornada.setNombre("Jornada 1");
-        jornada.setCompeticion(competicion1);
-        entityManager.persist(jornada);
+        Jornada jornada1 = new Jornada("Primera Jornada");
+        jornada1.setCompeticion(competicion1);
+        entityManager.persist(jornada1);
         
-	
+     // Crear partidos para la jornada
+        crearPartido(entityManager, jornada1, equipo1, equipo2);
+        crearPartido(entityManager, jornada1, equipo3, equipo4);
+        crearPartido(entityManager, jornada1, equipo2, equipo5);
+        crearPartido(entityManager, jornada1, equipo4, equipo1);
+        crearPartido(entityManager, jornada1, equipo5, equipo3);
+
 		entityManager.getTransaction().commit();
 		entityManager.close();
 		factory.close();
 				
 	}
+	
+	private static void crearPartido(EntityManager em, Jornada jornada, Equipo equipoLocal, Equipo equipoVisitante) {
+        Partido partido = new Partido();
+        partido.setEquipoLocal(equipoLocal);
+        partido.setEquipoVisitante(equipoVisitante);
+        partido.setJornada(jornada);
+        partido.setResultado(equipoVisitante.getNombre());
+
+        em.persist(partido);
+    }
 
 }
