@@ -1,5 +1,7 @@
 package daoImplementacion;
 
+import java.util.List;
+
 import dao.DAOGenerico;
 import entidades.Competicion;
 import entidades.Jugador;
@@ -17,7 +19,7 @@ public class CompeticionImplementacionDAO implements DAOGenerico <Competicion> {
 		entityManager.getTransaction().begin();
 		entityManager.persist(competicionInsetar);
 		entityManager.getTransaction().commit();
-		entityManager.close();
+
 		
 	}
 	@Override
@@ -29,7 +31,7 @@ public class CompeticionImplementacionDAO implements DAOGenerico <Competicion> {
 		entityManager.getTransaction().begin();
 		entityManager.merge(competicionUpdate);
 		entityManager.getTransaction().commit();
-		entityManager.close();
+
 		
 	}
 
@@ -41,7 +43,7 @@ public class CompeticionImplementacionDAO implements DAOGenerico <Competicion> {
 		entityManager.getTransaction().begin();
 		entityManager.remove(competicionDelete);
 		entityManager.getTransaction().commit();
-		entityManager.close();
+
 		
 	}
 

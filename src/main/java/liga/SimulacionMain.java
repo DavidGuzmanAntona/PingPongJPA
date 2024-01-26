@@ -24,12 +24,11 @@ public class SimulacionMain {
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("competicion");
 		EntityManager entityManager = factory.createEntityManager();
-		
-	//Crear Competicion
-		
-		Competicion competicion1 = new Competicion("Liga Veteranos Tenis de Mesa", LocalDate.parse("01/02/1980", FORMATTER), 4, 5);
-		entityManager.persist(competicion1);	
 		entityManager.getTransaction().begin();
+		
+	//Crear Competicion		
+		Competicion competicion1 = new Competicion("Liga Veteranos Tenis de Mesa", LocalDate.parse("01/02/1980", FORMATTER), 4, 5);			
+		entityManager.persist(competicion1);
 		
 	//Crear Equipos
 		Equipo equipo1 = new Equipo("Pacos", "Madrid", 28039, "p1", "t1");
@@ -117,22 +116,32 @@ public class SimulacionMain {
 		
 		// Crear una jornada
         Jornada jornada1 = new Jornada("Primera Jornada");
-        jornada1.setCompeticion(competicion1);
-        entityManager.persist(jornada1);
+        Jornada jornada2 = new Jornada("Segunda Jornada");
+        Jornada jornada3 = new Jornada("Tercera Jornada");
+        Jornada jornada4 = new Jornada("Cuarta Jornada");
         
+        competicion1.setJornadas(List.of(jornada1, jornada2, jornada3, jornada4));
+        
+        entityManager.persist(jornada1);
+        entityManager.persist(jornada2);
+        entityManager.persist(jornada3);
+        entityManager.persist(jornada4);
+   /*     
      // Crear partidos para la jornada
         crearPartido(entityManager, jornada1, equipo1, equipo2);
         crearPartido(entityManager, jornada1, equipo3, equipo4);
         crearPartido(entityManager, jornada1, equipo2, equipo5);
         crearPartido(entityManager, jornada1, equipo4, equipo1);
         crearPartido(entityManager, jornada1, equipo5, equipo3);
-
+       
+        */
+      
 		entityManager.getTransaction().commit();
 		entityManager.close();
 		factory.close();
 				
 	}
-	
+	/*
 	private static void crearPartido(EntityManager em, Jornada jornada, Equipo equipoLocal, Equipo equipoVisitante) {
         Partido partido = new Partido();
         partido.setEquipoLocal(equipoLocal);
@@ -142,5 +151,5 @@ public class SimulacionMain {
 
         em.persist(partido);
     }
-
+*/
 }

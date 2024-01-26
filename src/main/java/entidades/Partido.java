@@ -8,10 +8,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
+/*
 @Entity
 @Table(name = "Match")
+*/
+
 public class Partido {
+	
+	/*
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdMAtch")
@@ -33,18 +37,17 @@ public class Partido {
     private Jornada jornada;
 
 	public Partido() {
-		super();
 	}
 
 
 
-	public Partido( Equipo equipoLocal, Equipo equipoVisitante, Jornada jornada, Equipo resultado) {
+	public Partido( Equipo equipoLocal, Equipo equipoVisitante, Jornada jornada, String resultado) {
 		super();
 		
 		this.equipoLocal = equipoLocal;
 		this.equipoVisitante = equipoVisitante;
 		this.jornada = jornada;
-		Resultado = resultado;
+		this.Resultado = resultado;
 	}
 
 
@@ -76,7 +79,7 @@ public class Partido {
 		return id;
 	}
 
-	public Equipo getResultado() {
+	public String getResultado() {
 		return Resultado;
 	}
 
@@ -84,7 +87,6 @@ public class Partido {
 		Resultado = string;
 	}
 
-    
-    
+*/
     
 }

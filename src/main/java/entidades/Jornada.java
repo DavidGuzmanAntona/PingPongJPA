@@ -30,7 +30,7 @@ public class Jornada {
 	private Competicion competicion;
 
 
-	@OneToMany(mappedBy = "jornada") private List<Partido> partidos;
+//	@OneToMany(mappedBy = "jornada") private List<Partido> partidos;
 	 
 
 	public Jornada() {
@@ -56,6 +56,14 @@ public class Jornada {
 
 	public void setCompeticion(Competicion competicion) {
 		this.competicion = competicion;
+	}
+
+	public String getNombreJornada() {
+		return nombreJornada;
+	}
+
+	public void setNombreJornada(String nombreJornada) {
+		this.nombreJornada = nombreJornada;
 	}
 	
 	

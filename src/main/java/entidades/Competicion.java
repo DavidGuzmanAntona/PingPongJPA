@@ -111,6 +111,9 @@ public List<Jornada> getJornadas() {
 
 public void setJornadas(List<Jornada> jornadas) {
 	this.jornadas = jornadas;
+	for (Jornada jornada : jornadas) {
+		jornada.setCompeticion(this);
+	}
 }
 
 //toString
