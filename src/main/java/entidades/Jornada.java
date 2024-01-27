@@ -13,41 +13,39 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Team")
+@Table(name = "Jornada")
 public class Jornada {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IdPlayday")
+	@Column(name = "idJornada")
+	private int idJornada;
 
-	private Long id;
-	@Column(name = "PlaydayName")
+	@Column(name = "JName")
 	private String nombreJornada;
-
-//Relaciones
-	@ManyToOne
-	@JoinColumn(name = "ID_COMPETICION")
-	private Competicion competicion;
-
-
-//	@OneToMany(mappedBy = "jornada") private List<Partido> partidos;
-	 
 
 	public Jornada() {
 		super();
 	}
 
-	public Jornada(String nombre) {
+	public Jornada(String nombreJornada) {
 		super();
-		this.nombreJornada = nombre;
+		this.nombreJornada = nombreJornada;
+
 	}
 
-	public String getNombre() {
+	// Relaciones
+	@ManyToOne
+	@JoinColumn(name = "ID_COMPETICION")
+	private Competicion competicion;
+
+//getters Setters
+	public String getNombreJornada() {
 		return nombreJornada;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombreJornada = nombre;
+	public void setNombreJornada(String nombreJornada) {
+		this.nombreJornada = nombreJornada;
 	}
 
 	public Competicion getCompeticion() {
@@ -58,14 +56,8 @@ public class Jornada {
 		this.competicion = competicion;
 	}
 
-	public String getNombreJornada() {
-		return nombreJornada;
+	public int getIdJornada() {
+		return idJornada;
 	}
-
-	public void setNombreJornada(String nombreJornada) {
-		this.nombreJornada = nombreJornada;
-	}
-	
-	
 
 }

@@ -49,10 +49,8 @@ public class Equipo {
 	private Competicion competicion;
 
 	@ManyToMany
-	@JoinTable(name = "team_sponsor", 
-	joinColumns = @JoinColumn(name = "team_id"), 
-	inverseJoinColumns = @JoinColumn(name = "sponsor_id"))
-	private List<Patrocinador> patrocinador= new ArrayList<Patrocinador>();
+	@JoinTable(name = "team_sponsor", joinColumns = @JoinColumn(name = "team_id"), inverseJoinColumns = @JoinColumn(name = "sponsor_id"))
+	private List<Patrocinador> patrocinador = new ArrayList<Patrocinador>();
 
 //Constructores
 	public Equipo() {
@@ -137,7 +135,7 @@ public class Equipo {
 	public void setCompeticion(Competicion competicion) {
 		this.competicion = competicion;
 	}
-	
+
 	public List<Patrocinador> getPatrocinador() {
 		return patrocinador;
 	}
@@ -146,13 +144,11 @@ public class Equipo {
 		this.patrocinador = patrocinador;
 	}
 
-
 //To String
 	@Override
 	public String toString() {
 		return "Equipo [idClub=" + idClub + ", nombre=" + nombre + ", provincia=" + ", poblacion=" + poblacion
 				+ ", codigoPostal=" + codigoPostal + ", pelota=" + pelota + ", mesa=" + mesa + "]";
 	}
-
 
 }

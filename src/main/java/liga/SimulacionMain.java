@@ -8,7 +8,6 @@ import entidades.Competicion;
 import entidades.Equipo;
 import entidades.Jornada;
 import entidades.Jugador;
-import entidades.Partido;
 import entidades.Patrocinador;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
