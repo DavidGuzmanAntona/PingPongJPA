@@ -35,12 +35,14 @@ public class SimulacionMain {
 		Equipo equipo3 = new Equipo("Navidades", "Sevilla", 3639, "p1", "t1");
 		Equipo equipo4 = new Equipo("Amigos", "Cadiz", 29360, "p2", "t1");
 		Equipo equipo5 = new Equipo("Locos", "Badajoz", 23139, "p2", "t1");
+		Equipo equipo6 = new Equipo("Valencia CTT", "Valencia", 12345, "p1", "t2");
 
 		entityManager.persist(equipo1);
 		entityManager.persist(equipo2);
 		entityManager.persist(equipo3);
 		entityManager.persist(equipo4);
 		entityManager.persist(equipo5);
+		entityManager.persist(equipo6);
 		
 	//Asignar competicion a equipos
 		equipo1.setCompeticion(competicion1);	
@@ -48,43 +50,51 @@ public class SimulacionMain {
 		equipo3.setCompeticion(competicion1);	
 		equipo4.setCompeticion(competicion1);
 		equipo5.setCompeticion(competicion1);
+		equipo6.setCompeticion(competicion1);
 
 	// Crear jugadores y asignarlos a los equipos 	
 		
 		equipo1.setJugadores(List.of(
-				new Jugador(12345, "David", "Español", LocalDate.parse("01/09/2012", FORMATTER)),
-				new Jugador(12355, "Dulce2", "Español", LocalDate.parse("01/09/2010", FORMATTER)),
-				new Jugador(12365, "David3", "Español", LocalDate.parse("01/09/2009", FORMATTER)),
-				new Jugador(12375, "David4", "Español", LocalDate.parse("01/09/2008", FORMATTER)),
-				new Jugador(12385, "David5", "Español", LocalDate.parse("01/09/2007", FORMATTER))
+				new Jugador(12345, "David", "Español", LocalDate.parse("01/09/2012", FORMATTER), false),
+				new Jugador(12355, "Dulce2", "Español", LocalDate.parse("01/09/2010", FORMATTER), false),
+				new Jugador(12365, "David3", "Español", LocalDate.parse("01/09/2009", FORMATTER), false),
+				new Jugador(12375, "David4", "Español", LocalDate.parse("01/09/2008", FORMATTER), false),
+				new Jugador(12385, "David5", "Español", LocalDate.parse("01/09/2007", FORMATTER), false)
 				));		
 		equipo2.setJugadores(List.of(
-				new Jugador(12395, "David6", "Español", LocalDate.parse("01/09/2012", FORMATTER)),
-				new Jugador(12396, "Dulce7", "Español", LocalDate.parse("01/09/2010", FORMATTER)),
-				new Jugador(12397, "David8", "Español", LocalDate.parse("01/09/2009", FORMATTER)),
-				new Jugador(12398, "David9", "Español", LocalDate.parse("01/09/2008", FORMATTER)),
-				new Jugador(12399, "David10", "Español", LocalDate.parse("01/09/2007", FORMATTER))
+				new Jugador(12395, "David6", "Español", LocalDate.parse("01/09/2012", FORMATTER), false),
+				new Jugador(12396, "Dulce7", "Español", LocalDate.parse("01/09/2010", FORMATTER), false),
+				new Jugador(12397, "David8", "Español", LocalDate.parse("01/09/2009", FORMATTER), false),
+				new Jugador(12398, "David9", "Español", LocalDate.parse("01/09/2008", FORMATTER), false),
+				new Jugador(12399, "David10", "Español", LocalDate.parse("01/09/2007", FORMATTER), false)
 				));
 		equipo3.setJugadores(List.of(
-				new Jugador(12395, "David6", "Español", LocalDate.parse("01/09/2012", FORMATTER)),
-				new Jugador(12396, "Dulce7", "Español", LocalDate.parse("01/09/2010", FORMATTER)),
-				new Jugador(12397, "David8", "Español", LocalDate.parse("01/09/2009", FORMATTER)),
-				new Jugador(12398, "David9", "Español", LocalDate.parse("01/09/2008", FORMATTER)),
-				new Jugador(12399, "David10", "Español", LocalDate.parse("01/09/2007", FORMATTER))
+				new Jugador(12395, "David6", "Español", LocalDate.parse("01/09/2012", FORMATTER), false),
+				new Jugador(12396, "Dulce7", "Español", LocalDate.parse("01/09/2010", FORMATTER), false),
+				new Jugador(12397, "David8", "Español", LocalDate.parse("01/09/2009", FORMATTER), false),
+				new Jugador(12398, "David9", "Español", LocalDate.parse("01/09/2008", FORMATTER), false),
+				new Jugador(12399, "David10", "Español", LocalDate.parse("01/09/2007", FORMATTER), false)
 				));
 		equipo4.setJugadores(List.of(
-				new Jugador(12395, "David6", "Español", LocalDate.parse("01/09/2012", FORMATTER)),
-				new Jugador(12396, "Dulce7", "Español", LocalDate.parse("01/09/2010", FORMATTER)),
-				new Jugador(12397, "David8", "Español", LocalDate.parse("01/09/2009", FORMATTER)),
-				new Jugador(12398, "David9", "Español", LocalDate.parse("01/09/2008", FORMATTER)),
-				new Jugador(12399, "David10", "Español", LocalDate.parse("01/09/2007", FORMATTER))
+				new Jugador(12395, "David6", "Español", LocalDate.parse("01/09/2012", FORMATTER), false),
+				new Jugador(12396, "Dulce7", "Español", LocalDate.parse("01/09/2010", FORMATTER), false),
+				new Jugador(12397, "David8", "Español", LocalDate.parse("01/09/2009", FORMATTER), false),
+				new Jugador(12398, "David9", "Español", LocalDate.parse("01/09/2008", FORMATTER), false),
+				new Jugador(12399, "David10", "Español", LocalDate.parse("01/09/2007", FORMATTER), false)
 				));
 		equipo5.setJugadores(List.of(
-				new Jugador(12395, "David6", "Español", LocalDate.parse("01/09/2012", FORMATTER)),
-				new Jugador(12396, "Dulce7", "Español", LocalDate.parse("01/09/2010", FORMATTER)),
-				new Jugador(12397, "David8", "Español", LocalDate.parse("01/09/2009", FORMATTER)),
-				new Jugador(12398, "David9", "Español", LocalDate.parse("01/09/2008", FORMATTER)),
-				new Jugador(12399, "David10", "Español", LocalDate.parse("01/09/2007", FORMATTER))
+				new Jugador(12395, "David6", "Español", LocalDate.parse("01/09/2012", FORMATTER), false),
+				new Jugador(12396, "Dulce7", "Español", LocalDate.parse("01/09/2010", FORMATTER), false),
+				new Jugador(12397, "David8", "Español", LocalDate.parse("01/09/2009", FORMATTER), false),
+				new Jugador(12398, "David9", "Español", LocalDate.parse("01/09/2008", FORMATTER), false),
+				new Jugador(12399, "David10", "Español", LocalDate.parse("01/09/2007", FORMATTER), false)
+				));
+		equipo6.setJugadores(List.of(
+				new Jugador(12395, "David6", "Español", LocalDate.parse("01/09/2012", FORMATTER), false),
+				new Jugador(12396, "Dulce7", "Español", LocalDate.parse("01/09/2010", FORMATTER), false),
+				new Jugador(12397, "David8", "Español", LocalDate.parse("01/09/2009", FORMATTER), false),
+				new Jugador(12398, "David9", "Español", LocalDate.parse("01/09/2008", FORMATTER), false),
+				new Jugador(12399, "David10", "Español", LocalDate.parse("01/09/2007", FORMATTER), false)
 				));
 		
 	//Crear Patrocinadores
@@ -94,37 +104,45 @@ public class SimulacionMain {
 		Patrocinador Patrocinador3 = new Patrocinador("L'escala Empúries", 1200);
 		Patrocinador Patrocinador4 = new Patrocinador("Anguriñas", 3000);
 		Patrocinador Patrocinador5 = new Patrocinador("Burguer King", 3100);
+		Patrocinador Patrocinador6 = new Patrocinador("Ikea", 6320);
 		
 		entityManager.persist(Patrocinador1);
 		entityManager.persist(Patrocinador2);
 		entityManager.persist(Patrocinador3);
 		entityManager.persist(Patrocinador4);
 		entityManager.persist(Patrocinador5);
+		entityManager.persist(Patrocinador6);
 				
 		List<Patrocinador> patrocinio1 = List.of(Patrocinador1, Patrocinador2);
 		List<Patrocinador> patrocinio2 = List.of(Patrocinador3);
 		List<Patrocinador> patrocinio3 = List.of(Patrocinador3,Patrocinador1 );
 		List<Patrocinador> patrocinio4 = List.of(Patrocinador4, Patrocinador2);
 		List<Patrocinador> patrocinio5 = List.of(Patrocinador4, Patrocinador5);
+		List<Patrocinador> patrocinio6 = List.of(Patrocinador2, Patrocinador5, Patrocinador6);
 		
 		equipo1.setPatrocinador(patrocinio1);
 		equipo2.setPatrocinador(patrocinio2);
 		equipo3.setPatrocinador(patrocinio3);
 		equipo4.setPatrocinador(patrocinio4);
 		equipo5.setPatrocinador(patrocinio5);
+		equipo6.setPatrocinador(patrocinio6);
+
+		
 		
 		// Crear una jornada
         Jornada jornada1 = new Jornada("Primera Jornada");
         Jornada jornada2 = new Jornada("Segunda Jornada");
         Jornada jornada3 = new Jornada("Tercera Jornada");
         Jornada jornada4 = new Jornada("Cuarta Jornada");
+        Jornada jornada5 = new Jornada("Quinta Jornada");
         
-        competicion1.setJornadas(List.of(jornada1, jornada2, jornada3, jornada4));
+        competicion1.setJornadas(List.of(jornada1, jornada2, jornada3, jornada4, jornada5));
         
         entityManager.persist(jornada1);
         entityManager.persist(jornada2);
         entityManager.persist(jornada3);
         entityManager.persist(jornada4);
+        entityManager.persist(jornada5);
    /*     
      // Crear partidos para la jornada
         crearPartido(entityManager, jornada1, equipo1, equipo2);

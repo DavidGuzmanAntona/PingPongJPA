@@ -32,6 +32,9 @@ public class Jugador {
 
 	@Column(name = "BirthDate")
 	private LocalDate edad;
+	
+	@Column(name= "NewPlayer24")
+	private boolean nuevoFichaje;
 
 //Relaciones
 
@@ -42,17 +45,20 @@ public class Jugador {
 	public Jugador() {
 		super();
 	}
-
-	public Jugador(int licencia, String nombre, String nacionalidad, LocalDate edad) {
+	
+	public Jugador(int licencia, String nombre, String nacionalidad, LocalDate edad, boolean nuevoFichaje) {
 		super();
 		this.licencia = licencia;
 		this.nombre = nombre;
 		this.nacionalidad = nacionalidad;
 		this.edad = edad;
-	
+		this.nuevoFichaje = nuevoFichaje;
 	}
 	
+	
 // Getters y Setters
+
+	
 
 	public int getLicencia() {
 		return licencia;
@@ -98,6 +104,16 @@ public class Jugador {
 		return idDeportista;
 	}
 	
+	public boolean isNuevoFichaje() {
+		return nuevoFichaje;
+	}
+
+	public void setNuevoFichaje(boolean nuevoFichaje) {
+		this.nuevoFichaje = nuevoFichaje;
+	}
+
+	
+	
 //To String	
 	@Override
 	public String toString() {
@@ -105,7 +121,7 @@ public class Jugador {
 				+ ", nacionalidad=" + nacionalidad + ", edad=" + edad + "]";
 	}
 
-	
+
 	
 
 }
