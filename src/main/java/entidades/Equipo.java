@@ -14,6 +14,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -41,6 +42,9 @@ public class Equipo {
 	private String mesa;
 
 //Relaciones
+	@OneToOne(mappedBy = "equipo", cascade = CascadeType.ALL)
+	private Estadio estadio;
+
 	@OneToMany(mappedBy = "equipo", cascade = CascadeType.ALL)
 	private List<Jugador> jugadores = new ArrayList<Jugador>();
 
@@ -56,14 +60,14 @@ public class Equipo {
 	public Equipo() {
 	}
 
-	public Equipo(String nombre, String poblacion, int codigoPostal, String pelota, String mesa) {
+	public Equipo(String nombre, String poblacion, int codigoPostal, String pelota, String mesa, Estadio estadio) {
 		super();
 		this.nombre = nombre;
-
 		this.poblacion = poblacion;
 		this.codigoPostal = codigoPostal;
 		this.pelota = pelota;
 		this.mesa = mesa;
+		this.estadio = estadio;
 	}
 
 // Getters y Setters	
@@ -144,11 +148,21 @@ public class Equipo {
 		this.patrocinador = patrocinador;
 	}
 
-//To String
+	public Estadio getEstadio() {
+		return estadio;
+	}
+
+	public void setEstadio(Estadio estadio) {
+		this.estadio = estadio;
+	}
+
 	@Override
 	public String toString() {
-		return "Equipo [idClub=" + idClub + ", nombre=" + nombre + ", provincia=" + ", poblacion=" + poblacion
-				+ ", codigoPostal=" + codigoPostal + ", pelota=" + pelota + ", mesa=" + mesa + "]";
+		return "Equipo [idClub=" + idClub + ", nombre=" + nombre + ", poblacion=" + poblacion + ", codigoPostal="
+				+ codigoPostal + ", pelota=" + pelota + ", mesa=" + mesa + ", estadio=" + estadio + "]";
 	}
+
+//To String
+
 
 }
