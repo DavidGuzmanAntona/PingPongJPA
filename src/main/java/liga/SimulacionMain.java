@@ -22,6 +22,8 @@ public class SimulacionMain {
 		
 		
 		
+		
+		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("competicion");
 		EntityManager entityManager = factory.createEntityManager();
 		entityManager.getTransaction().begin();
@@ -168,30 +170,15 @@ public class SimulacionMain {
         entityManager.persist(jornada3);
         entityManager.persist(jornada4);
         entityManager.persist(jornada5);
-   /*     
-     // Crear partidos para la jornada
-        crearPartido(entityManager, jornada1, equipo1, equipo2);
-        crearPartido(entityManager, jornada1, equipo3, equipo4);
-        crearPartido(entityManager, jornada1, equipo2, equipo5);
-        crearPartido(entityManager, jornada1, equipo4, equipo1);
-        crearPartido(entityManager, jornada1, equipo5, equipo3);
-       
-        */
+
       
 		entityManager.getTransaction().commit();
 		entityManager.close();
 		factory.close();
-				
+			
+		//Simulacion Partido
+		
+		
 	}
-	/*
-	private static void crearPartido(EntityManager em, Jornada jornada, Equipo equipoLocal, Equipo equipoVisitante) {
-        Partido partido = new Partido();
-        partido.setEquipoLocal(equipoLocal);
-        partido.setEquipoVisitante(equipoVisitante);
-        partido.setJornada(jornada);
-        partido.setResultado(equipoVisitante.getNombre());
 
-        em.persist(partido);
-    }
-*/
 }

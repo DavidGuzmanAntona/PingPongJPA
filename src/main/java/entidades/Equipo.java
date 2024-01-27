@@ -41,6 +41,21 @@ public class Equipo {
 	@Column(name = "TableType")
 	private String mesa;
 
+	@Column(name = "TotalMatches")
+	private int partidosJugados;
+
+	@Column(name = "matchWins")
+	private int partidosGanados = 0;
+
+	@Column(name = "matchLose")
+	private int partidosPerdidos = 0;
+
+	@Column(name = "matchDraw")
+	private int partidosEmpatados = 0;
+
+	@Column(name = "TotalPoints")
+	private int puntosLiga;
+
 //Relaciones
 	@OneToOne(mappedBy = "equipo", cascade = CascadeType.ALL)
 	private Estadio estadio;
@@ -68,6 +83,7 @@ public class Equipo {
 		this.pelota = pelota;
 		this.mesa = mesa;
 		this.estadio = estadio;
+		this.puntosLiga = partidosEmpatados + (partidosGanados * 3);
 	}
 
 // Getters y Setters	
@@ -156,13 +172,29 @@ public class Equipo {
 		this.estadio = estadio;
 	}
 
+//To String
 	@Override
 	public String toString() {
 		return "Equipo [idClub=" + idClub + ", nombre=" + nombre + ", poblacion=" + poblacion + ", codigoPostal="
-				+ codigoPostal + ", pelota=" + pelota + ", mesa=" + mesa + ", estadio=" + estadio + "]";
+				+ codigoPostal + ", pelota=" + pelota + ", mesa=" + mesa + ", partidosJugados=" + partidosJugados
+				+ ", partidosGanados=" + partidosGanados + ", partidosPerdidos=" + partidosPerdidos
+				+ ", partidosEmpatados=" + partidosEmpatados + ", puntosLiga=" + puntosLiga + "]";
 	}
 
-//To String
+//metodos de clase
+	public void sumarVictoria() {
+		partidosGanados++;
 
+	}
+
+	public void sumarEmpate() {
+		partidosEmpatados++;
+
+	}
+
+	public void sumarDerrota() {
+		partidosPerdidos++;
+
+	}
 
 }
