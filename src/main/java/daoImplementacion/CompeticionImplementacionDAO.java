@@ -8,6 +8,7 @@ import entidades.Jugador;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 
 public class CompeticionImplementacionDAO implements DAOGenerico <Competicion> {
 
@@ -53,6 +54,13 @@ public class CompeticionImplementacionDAO implements DAOGenerico <Competicion> {
 		EntityManager entityManager = emf.createEntityManager();
 		Competicion comp = entityManager.find(Competicion.class, idCompeticion);
 		return comp;
+	}
+	@Override
+	public List<Competicion> findAll() {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
+		EntityManager entityManager = emf.createEntityManager();
+		TypedQuery<Competicion> query = entityManager.createQuery("SELECT j FROM Competicion j", Competicion.class);
+        return query.getResultList();
 	}
 
 

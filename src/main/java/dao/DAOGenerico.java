@@ -10,6 +10,6 @@ public interface DAOGenerico<T> {
     void update(int id, String nombre);
     void delete(int id);
     T findById(long id);
-   // List<T> findAll();
+    List<T> findAll();
 
 }

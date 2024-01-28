@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+
 import entidades.Competicion;
 import entidades.Equipo;
 import entidades.Estadio;
@@ -177,6 +178,9 @@ public class SimulacionMain {
 		factory.close();
 			
 		//Simulacion Partido
+		
+	//	JugadorImplementacionDAO jugadorDAO = new JugadorImplementacionDAO();
+	//	SimulacionPartidos.simularJornada(jugadorDAO.findAll());
 		
 		
 	}

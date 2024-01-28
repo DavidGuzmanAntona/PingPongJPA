@@ -8,7 +8,7 @@ import entidades.Equipo;
 public class SimulacionPartidos {
 	
 	
-	private static void simularJornada(List<Equipo> equiposLiga) {
+	public static void simularJornada(List<Equipo> equiposLiga) {
 		
 		System.out.println("Iniciando simulacion de Jornada:");
 		
