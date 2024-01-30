@@ -54,7 +54,7 @@ public class Equipo {
 	private int partidosEmpatados = 0;
 
 	@Column(name = "TotalPoints")
-	private int puntosLiga;
+	private int puntosLiga= 0;
 
 //Relaciones
 	@OneToOne(mappedBy = "equipo", cascade = CascadeType.ALL)
@@ -83,7 +83,6 @@ public class Equipo {
 		this.pelota = pelota;
 		this.mesa = mesa;
 		this.estadio = estadio;
-		this.puntosLiga = partidosEmpatados + (partidosGanados * 3);
 	}
 
 // Getters y Setters	
@@ -199,6 +198,11 @@ public class Equipo {
 
 	public void sumarPartidos() {
 		partidosJugados++;
+		
+	}
+
+	public void sumarPuntos(int puntos) {
+		puntosLiga+=puntos;
 		
 	}
 
