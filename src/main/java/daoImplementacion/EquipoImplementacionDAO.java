@@ -3,9 +3,7 @@ package daoImplementacion;
 import java.util.List;
 
 import dao.DAOGenerico;
-import dao.EquipoDAO;
 import entidades.Equipo;
-import entidades.Jugador;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -25,13 +23,11 @@ public class EquipoImplementacionDAO implements DAOGenerico<Equipo> {
 	}
 
 	@Override
-	public void update(int idEquipo, String nombre) {
+	public void update(Equipo equipo) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
 		EntityManager entityManager = emf.createEntityManager();
-		Equipo equipoUpdate = entityManager.find(Equipo.class, idEquipo);
-		equipoUpdate.setNombre(nombre);
 		entityManager.getTransaction().begin();
-		entityManager.merge(equipoUpdate);
+		entityManager.merge(equipo);
 		entityManager.getTransaction().commit();
 		entityManager.close();
 		
@@ -68,3 +64,4 @@ public class EquipoImplementacionDAO implements DAOGenerico<Equipo> {
 
 
 }
+

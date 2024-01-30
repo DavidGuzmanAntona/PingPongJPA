@@ -24,13 +24,11 @@ public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 	}
 
 	@Override
-	public void update(int idJugador, String nombre) {
+	public void update(Jugador jugador) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
 		EntityManager entityManager = emf.createEntityManager();
-		Jugador jugadorUpdate = entityManager.find(Jugador.class, idJugador);
-		jugadorUpdate.setNombre(nombre);
 		entityManager.getTransaction().begin();
-		entityManager.merge(jugadorUpdate);
+		entityManager.merge(jugador);
 		entityManager.getTransaction().commit();
 		entityManager.close();
 	}

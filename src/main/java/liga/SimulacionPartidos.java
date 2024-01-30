@@ -23,7 +23,7 @@ public class SimulacionPartidos {
 				Equipo equipoLocal = equiposLiga.get(i);
 				Equipo equipoVisitante = equiposLiga.get(j);
 				int equipoLocRes = random.nextInt(6);
-				int equipoVisRes = random.nextInt(6);
+				int equipoVisRes = 5 - equipoLocRes;
 
 				if (equipoLocRes > equipoVisRes) {
 					equipoLocal.sumarVictoria();
@@ -35,15 +35,19 @@ public class SimulacionPartidos {
 				}
 				if (equipoLocRes < equipoVisRes) {
 					equipoVisitante.sumarVictoria();
+					equipoLocal.sumarDerrota();
+					equipoVisitante.sumarPuntos(3);
+
 					System.out.println("El equipo: " + equipoVisitante.getNombre() + "Gana el partido contra: "
 							+ equipoLocal.getNombre());
 				}
 				if (equipoLocRes == equipoVisRes)
 					equipoVisitante.sumarEmpate();
-				equipoLocal.sumarPuntos(1);
-				equipoVisitante.sumarPuntos(1);
-				equipoLocal.sumarEmpate();
-				System.out.println("El equipo: " + equipoLocal.getNombre() + "Empata el partido contra: "
+					equipoLocal.sumarEmpate();
+					equipoLocal.sumarPuntos(1);
+					equipoVisitante.sumarPuntos(1);
+
+					System.out.println("El equipo: " + equipoLocal.getNombre() + "Empata el partido contra: "
 						+ equipoVisitante.getNombre());
 
 				equipoLocal.sumarPartidos();

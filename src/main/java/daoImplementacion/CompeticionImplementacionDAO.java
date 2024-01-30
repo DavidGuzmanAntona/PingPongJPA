@@ -10,6 +10,14 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 
+import dao.DAOGenerico;
+import entidades.Competicion;
+import entidades.Jugador;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
+
 public class CompeticionImplementacionDAO implements DAOGenerico <Competicion> {
 
 
@@ -24,13 +32,11 @@ public class CompeticionImplementacionDAO implements DAOGenerico <Competicion> {
 		
 	}
 	@Override
-	public void update(int idCompeticion, String nombre) {
+	public void update(Competicion competicion) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
 		EntityManager entityManager = emf.createEntityManager();
-		Competicion competicionUpdate = entityManager.find(Competicion.class, idCompeticion);
-		competicionUpdate.setNombre(nombre);
 		entityManager.getTransaction().begin();
-		entityManager.merge(competicionUpdate);
+		entityManager.merge(competicion);
 		entityManager.getTransaction().commit();
 
 		
@@ -66,3 +72,4 @@ public class CompeticionImplementacionDAO implements DAOGenerico <Competicion> {
 
 
 }
+

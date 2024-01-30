@@ -24,13 +24,11 @@ public class PatrocinadorImplementacionDAO implements DAOGenerico<Patrocinador> 
 	}
 
 	@Override
-	public void update(int idPatrocinador, String nombre) {
+	public void update(Patrocinador patrocinador) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
 		EntityManager entityManager = emf.createEntityManager();
-		Patrocinador patrocinadorUpdate = entityManager.find(Patrocinador.class, idPatrocinador);
-		patrocinadorUpdate.setNombrePatrocinador(nombre);
 		entityManager.getTransaction().begin();
-		entityManager.merge(patrocinadorUpdate);
+		entityManager.merge(patrocinador);
 		entityManager.getTransaction().commit();
 		entityManager.close();
 
@@ -65,3 +63,4 @@ public class PatrocinadorImplementacionDAO implements DAOGenerico<Patrocinador> 
 	}
 
 }
+

@@ -7,10 +7,9 @@ public interface DAOGenerico<T> {
 
 		
     void insertar(T entity);
-    void update(int id, String nombre);
+    void update(T entity);
     void delete(int id);
     T findById(long id);
     List<T> findAll();
-	
 
 }
