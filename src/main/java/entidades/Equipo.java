@@ -197,4 +197,9 @@ public class Equipo {
 
 	}
 
+	public void sumarPartidos() {
+		partidosJugados++;
+		
+	}
+
 }

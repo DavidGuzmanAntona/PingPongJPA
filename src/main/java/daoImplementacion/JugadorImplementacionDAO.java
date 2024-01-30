@@ -3,6 +3,7 @@ package daoImplementacion;
 import java.util.List;
 
 import dao.DAOGenerico;
+import entidades.Equipo;
 import entidades.Jugador;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -60,6 +61,19 @@ public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 		EntityManager entityManager = emf.createEntityManager();
 		TypedQuery<Jugador> query = entityManager.createQuery("SELECT j FROM Jugador j", Jugador.class);
         return query.getResultList();
+	}
+
+
+	public void updateEquipo(int idJugador, Equipo equipo) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
+		EntityManager entityManager = emf.createEntityManager();
+		Jugador jugadorUpdate = entityManager.find(Jugador.class, idJugador);
+		jugadorUpdate.setEquipo(equipo);
+		entityManager.getTransaction().begin();
+		entityManager.merge(jugadorUpdate);
+		entityManager.getTransaction().commit();
+		entityManager.close();
+		
 	}
 
 }

@@ -11,5 +11,6 @@ public interface DAOGenerico<T> {
     void delete(int id);
     T findById(long id);
     List<T> findAll();
+	
 
 }

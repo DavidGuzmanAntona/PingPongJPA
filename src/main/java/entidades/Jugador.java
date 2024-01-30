@@ -19,7 +19,7 @@ public class Jugador {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "IdPlayer")
-	private Long idDeportista;
+	private int idDeportista;
 
 	@Column(name = "License")
 	private int licencia;
@@ -100,7 +100,7 @@ public class Jugador {
 		this.equipo = equipo;
 	}
 
-	public Long getIdDeportista() {
+	public int getIdDeportista() {
 		return idDeportista;
 	}
 	
