@@ -170,6 +170,47 @@ public class Equipo {
 	public void setEstadio(Estadio estadio) {
 		this.estadio = estadio;
 	}
+	
+	public int getPartidosJugados() {
+		return partidosJugados;
+	}
+
+	public void setPartidosJugados(int partidosJugados) {
+		this.partidosJugados = partidosJugados;
+	}
+
+	public int getPartidosGanados() {
+		return partidosGanados;
+	}
+
+	public void setPartidosGanados(int partidosGanados) {
+		this.partidosGanados = partidosGanados;
+	}
+
+	public int getPartidosPerdidos() {
+		return partidosPerdidos;
+	}
+
+	public void setPartidosPerdidos(int partidosPerdidos) {
+		this.partidosPerdidos = partidosPerdidos;
+	}
+
+	public int getPartidosEmpatados() {
+		return partidosEmpatados;
+	}
+
+	public void setPartidosEmpatados(int partidosEmpatados) {
+		this.partidosEmpatados = partidosEmpatados;
+	}
+
+	public int getPuntosLiga() {
+		return puntosLiga;
+	}
+
+	public void setPuntosLiga(int puntosLiga) {
+		this.puntosLiga = puntosLiga;
+	}
+	
 
 //To String
 	@Override
@@ -205,5 +246,7 @@ public class Equipo {
 		puntosLiga+=puntos;
 		
 	}
+
+
 
 }

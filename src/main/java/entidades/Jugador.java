@@ -9,10 +9,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Player")
+@NamedQuery(
+	    name = "Jugador.findNuevosFichajes",
+	    query = "SELECT j FROM Jugador j WHERE j.nuevoFichaje = true")
 
 public class Jugador {
 

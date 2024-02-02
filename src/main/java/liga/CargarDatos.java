@@ -3,6 +3,7 @@ package liga;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 import entidades.Competicion;
 import entidades.Equipo;
@@ -168,11 +169,19 @@ public class CargarDatos {
 		    entityManager.persist(jornada3);
 		    entityManager.persist(jornada4);
 		    entityManager.persist(jornada5);
+		    
+		    Map<String, Object> properties = factory.getProperties();
+		    properties.put("jakarta.persistence.schema-generation.database.action", "drop-and-create");
 
 					
 			entityManager.getTransaction().commit();
 			entityManager.close();
 			factory.close();
+	}
+
+
+	public static EntityManager getEntityManager() {
+		return entityManager;
 	}
 
 }
