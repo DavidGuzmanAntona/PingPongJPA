@@ -9,7 +9,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
-
+import liga.SimulacionMain;
 import dao.DAOGenerico;
 import entidades.Competicion;
 import entidades.Jugador;
@@ -23,50 +23,49 @@ public class CompeticionImplementacionDAO implements DAOGenerico <Competicion> {
 
 	@Override
 	public void insertar(Competicion competicionInsetar) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(competicionInsetar);
 		entityManager.getTransaction().commit();
+		entityManager.close();
 
 		
 	}
 	@Override
 	public void update(Competicion competicion) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.merge(competicion);
 		entityManager.getTransaction().commit();
+		entityManager.close();
 
 		
 	}
 
 	@Override
 	public void delete(int idCompeticion) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Competicion competicionDelete= entityManager.find(Competicion.class, idCompeticion);
 		entityManager.getTransaction().begin();
 		entityManager.remove(competicionDelete);
 		entityManager.getTransaction().commit();
+		entityManager.close();
 
 		
 	}
 
 	@Override
 	public Competicion findById(long idCompeticion) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Competicion comp = entityManager.find(Competicion.class, idCompeticion);
 		return comp;
+		
 	}
 	@Override
 	public List<Competicion> findAll() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		TypedQuery<Competicion> query = entityManager.createQuery("SELECT j FROM Competicion j", Competicion.class);
-        return query.getResultList();
+		return query.getResultList();
 	}
 
 

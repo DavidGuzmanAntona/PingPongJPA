@@ -20,12 +20,11 @@ public class CargarDatos {
 	
 	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-	static EntityManagerFactory factory = Persistence.createEntityManagerFactory("competicion");
-	static EntityManager entityManager = factory.createEntityManager();
+
 	
 	
-	static void cargarDatosBD( ) {
-		
+	static void cargarDatosBD() {
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		entityManager.getTransaction().begin();
 		//Crear Competicion		
 			Competicion competicion1 = new Competicion("Liga Veteranos Tenis de Mesa", LocalDate.parse("01/02/1980", FORMATTER), 4, 5);			
@@ -170,18 +169,9 @@ public class CargarDatos {
 		    entityManager.persist(jornada4);
 		    entityManager.persist(jornada5);
 		    
-		    Map<String, Object> properties = factory.getProperties();
-		    properties.put("jakarta.persistence.schema-generation.database.action", "drop-and-create");
+		    entityManager.getTransaction().commit();
+		    entityManager.close();
+		   	}
 
-					
-			entityManager.getTransaction().commit();
-			entityManager.close();
-			factory.close();
-	}
-
-
-	public static EntityManager getEntityManager() {
-		return entityManager;
-	}
 
 }

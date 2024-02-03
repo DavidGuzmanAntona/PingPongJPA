@@ -9,13 +9,13 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import liga.SimulacionMain;
 
 public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 
 	@Override
 	public void insertar(Jugador jugador) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.persist(jugador);
 		entityManager.getTransaction().commit();
@@ -25,8 +25,7 @@ public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 
 	@Override
 	public void update(Jugador jugador) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		entityManager.getTransaction().begin();
 		entityManager.merge(jugador);
 		entityManager.getTransaction().commit();
@@ -35,8 +34,7 @@ public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 
 	@Override
 	public void delete(int idJugador) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Jugador jugadorDelete= entityManager.find(Jugador.class, idJugador);
 		entityManager.getTransaction().begin();
 		entityManager.remove(jugadorDelete);
@@ -47,24 +45,21 @@ public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 
 	@Override
 	public Jugador findById(long id) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Jugador e = entityManager.find(Jugador.class, id);
 		return e;
 	}
 
 	@Override
 	public List<Jugador> findAll() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		TypedQuery<Jugador> query = entityManager.createQuery("SELECT j FROM Jugador j", Jugador.class);
         return query.getResultList();
 	}
 
 
 	public void updateEquipo(int idJugador, Equipo equipo) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Jugador jugadorUpdate = entityManager.find(Jugador.class, idJugador);
 		jugadorUpdate.setEquipo(equipo);
 		entityManager.getTransaction().begin();

@@ -16,8 +16,6 @@ public class FichajesTemporada {
 
 	private static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-	static EntityManagerFactory factory = Persistence.createEntityManagerFactory("competicion");
-	static EntityManager entityManager = factory.createEntityManager();
 
 	static EquipoImplementacionDAO equipoIDAO = new EquipoImplementacionDAO();
 	static JugadorImplementacionDAO jugadorIDAO = new JugadorImplementacionDAO();

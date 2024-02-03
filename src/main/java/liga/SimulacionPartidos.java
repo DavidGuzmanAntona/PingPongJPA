@@ -60,8 +60,7 @@ public class SimulacionPartidos {
 	}
 
 	private static void updateDBResultados(List<Equipo> equipos) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 		try {
 			transaction.begin();

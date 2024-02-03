@@ -12,12 +12,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
+import liga.SimulacionMain;
 
 public class ConsultasCompeticion {
 
 	public static void consulta1() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Query query = entityManager.createNativeQuery("SELECT * FROM competition WHERE IdCompetition = :competicionId",
 				Competicion.class);
 		query.setParameter("competicionId", 1);
@@ -30,8 +30,7 @@ public class ConsultasCompeticion {
 	}
 
 	public static void consulta2() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Query query = entityManager.createQuery("SELECT e FROM Equipo e WHERE e.competicion.id = :competicionId",
 				Equipo.class);
 		query.setParameter("competicionId", 1);
@@ -44,8 +43,7 @@ public class ConsultasCompeticion {
 	}
 
 	public static void consulta3(String nombreEquipo) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Query query = entityManager.createQuery("SELECT d FROM Jugador d WHERE d.equipo.nombre = :insertarNombre",
 				Jugador.class);
 		query.setParameter("insertarNombre", nombreEquipo);
@@ -59,10 +57,8 @@ public class ConsultasCompeticion {
 	}
 
 	public static void consulta4(String nombreEquipo) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
-		Query query = entityManager.createQuery(
-				"SELECT p FROM patrocinador p JOIN p.equipos e WHERE e.nombre = :equipoNombre", Patrocinador.class);
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
+		Query query = entityManager.createQuery("SELECT p FROM Patrocinador p JOIN p.equipo e WHERE e.nombre = :equipoNombre", Patrocinador.class);
 		query.setParameter("equipoNombre", nombreEquipo);
 		List<Patrocinador> patrocinadores = query.getResultList();
 		System.out.println("## 4. Identifica y lista todos los patrocinadores asociados a un equipo concreto. ##");
@@ -74,8 +70,7 @@ public class ConsultasCompeticion {
 	}
 
 	public static void consulta6(String nombreEquipo) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Query query = entityManager.createQuery("SELECT j FROM Jugador j WHERE j.equipo.nombre = :equipoNombre",
 				Jugador.class);
 		query.setParameter("equipoNombre", nombreEquipo);
@@ -95,8 +90,7 @@ public class ConsultasCompeticion {
 	}
 
 	public static void consulta7() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Query query = entityManager.createQuery(
 				"SELECT j.nacionalidad, COUNT(j) FROM Jugador j WHERE (FUNC('YEAR', CURRENT_DATE) - FUNC('YEAR', j.edad)) > 23 GROUP BY j.nacionalidad");
 		List<Object[]> resultados = query.getResultList();
@@ -112,8 +106,7 @@ public class ConsultasCompeticion {
 	}
 
 	public static void consulta9() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Query queryMasPuntos = entityManager.createQuery("SELECT e FROM Equipo e ORDER BY e.puntosLiga DESC",
 				Equipo.class);
 		queryMasPuntos.setMaxResults(3);
@@ -140,8 +133,7 @@ public class ConsultasCompeticion {
 	}
 
 	public static void consulta10() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("competicion");
-		EntityManager entityManager = emf.createEntityManager();
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		Query query = entityManager.createNamedQuery("Jugador.findNuevosFichajes", Jugador.class);
 		List<Jugador> nuevosFichajes = query.getResultList();
 		System.out.println("## 10. Muestra las nuevas incorporaciones a la competición(utiliza una NamedQuery). ##");
@@ -150,6 +142,12 @@ public class ConsultasCompeticion {
 			System.out.println("Nombre: " + jugador.getNombre());
 		}
 		System.out.println("##################### FIN Consulta 10 #################################");
+	}
+
+	public static void consulta11() {
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
+		Query query = entityManager.createNamedQuery("Jugador.findNuevosFichajes", Jugador.class);
+		
 	}
 
 }
