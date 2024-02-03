@@ -3,6 +3,7 @@ package liga;
 import java.util.List;
 import java.util.Random;
 
+import consultas.ConsultasCompeticion;
 import daoImplementacion.EquipoImplementacionDAO;
 import entidades.Equipo;
 import jakarta.persistence.EntityManager;
@@ -17,8 +18,10 @@ public class SimulacionPartidos {
 		System.out.println("Iniciando simulacion de Jornada:");
 
 		Random random = new Random();
+		int contador=0;
 
 		for (int i = 0; i < equiposLiga.size(); i++) {
+			
 			for (int j = i + 1; j < equiposLiga.size(); j++) {
 				Equipo equipoLocal = equiposLiga.get(i);
 				Equipo equipoVisitante = equiposLiga.get(j);
@@ -54,7 +57,11 @@ public class SimulacionPartidos {
 				equipoVisitante.sumarPartidos();
 				
 			}
-
+			contador++;
+			if(contador==1||contador==3) {
+				updateDBResultados(equiposLiga);
+				ConsultasCompeticion.consulta8();
+			}
 		}
 		updateDBResultados(equiposLiga);
 	}

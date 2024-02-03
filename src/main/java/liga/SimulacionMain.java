@@ -17,7 +17,6 @@ import jakarta.persistence.Query;
 public class SimulacionMain {
 	
 	public static EntityManagerFactory factory = Persistence.createEntityManagerFactory("competicion");
-	//public static EntityManager entityManager = factory.createEntityManager();
 
 	public static void main(String[] args) {
 
@@ -53,7 +52,9 @@ public class SimulacionMain {
 	//	ConsultasCompeticion.consulta11();
 	//	ConsultasCompeticion.consulta12();
 	//	ConsultasCompeticion.consulta13("MIRÓ GANXETS REUS", "IRUN LEKA ENEA");
-		//ConsultasCompeticion.consulta14();
+	//	ConsultasCompeticion.consulta14_1();
+	//	ConsultasCompeticion.consulta14_2();
+	//	ConsultasCompeticion.consulta14_3();
 
 		
 	   
