@@ -40,12 +40,14 @@ public class SimulacionMain {
 
 
 		// Consultas
-		ConsultasCompeticion.consulta1();
-		ConsultasCompeticion.consulta2();
-		ConsultasCompeticion.consulta3("UCAM CARTAGENA TM");
-			ConsultasCompeticion.consulta4("UCAM CARTAGENA TM");
-	//	ConsultasCompeticion.consulta6("UCAM CARTAGENA TM");
-		//	ConsultasCompeticion.consulta7();
+	//	ConsultasCompeticion.consulta1();
+	//	ConsultasCompeticion.consulta2();
+	//	ConsultasCompeticion.consulta3("UCAM CARTAGENA TM");
+	//	ConsultasCompeticion.consulta4("IRUN LEKA ENEA");
+	//	ConsultasCompeticion.consulta5("IRUN LEKA ENEA");
+	//	ConsultasCompeticion.consulta6("UCAM CARTAGENA TM");		
+	//	ConsultasCompeticion.consulta7();
+		ConsultasCompeticion.consulta8();
 	//	ConsultasCompeticion.consulta9();
 	//	ConsultasCompeticion.consulta10();
 	//	ConsultasCompeticion.consulta11();

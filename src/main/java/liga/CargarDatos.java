@@ -27,7 +27,7 @@ public class CargarDatos {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		entityManager.getTransaction().begin();
 		//Crear Competicion		
-			Competicion competicion1 = new Competicion("Liga Veteranos Tenis de Mesa", LocalDate.parse("01/02/1980", FORMATTER), 4, 5);			
+			Competicion competicion1 = new Competicion("LIGA IBERDROLA SUPERDIVISIÓN FEMENINA", LocalDate.parse("01/02/1980", FORMATTER), 4, 5);			
 			entityManager.persist(competicion1);
 		//Crear Estadio
 			Estadio estadio1= new Estadio("CENTRO DE TECNIFICACION DE TENIS DE MESA", "AV. DE LA JUVENTUD 3", 300);
@@ -80,44 +80,44 @@ public class CargarDatos {
 		// Crear jugadores y asignarlos a los equipos 	
 			
 			equipo1.setJugadores(List.of(
-					new Jugador(27020, "ISABEL CONCHILLO MARTINEZ", "ESPAÑOLA", LocalDate.parse("01/09/2012", FORMATTER), false),
+					new Jugador(27020, "ISABEL CONCHILLO MARTINEZ", "ESPAÑOLA", LocalDate.parse("01/09/1991", FORMATTER), false),
 					new Jugador(39598, "JIAQI MENG ", "CHINA", LocalDate.parse("01/09/2010", FORMATTER), false),
-					new Jugador(21949, "JULIA MARTIN LINARES", "ESPAÑOLA", LocalDate.parse("01/09/2009", FORMATTER), false),
-					new Jugador(41792, "KINGA IZABELLA STEFANSKA ", "POLACA", LocalDate.parse("01/09/2008", FORMATTER), false),
-					new Jugador(39242, "KRISTAL ALONDRA MELENDEZ LAFONTAINE", "PUERTORIQUEÑA", LocalDate.parse("01/09/2007", FORMATTER), false)
+					new Jugador(21949, "JULIA MARTIN LINARES", "ESPAÑOLA", LocalDate.parse("01/09/1996", FORMATTER), false),
+					new Jugador(41792, "KINGA IZABELLA STEFANSKA ", "POLACA", LocalDate.parse("01/09/2001", FORMATTER), false),
+					new Jugador(39242, "KRISTAL ALONDRA MELENDEZ LAFONTAINE", "PUERTORIQUEÑA", LocalDate.parse("01/09/1999", FORMATTER), false)
 					));		
 			equipo2.setJugadores(List.of(
 					new Jugador(19183, "CARMEN LOZANO MIRÓN", "ESPAÑOLA", LocalDate.parse("01/09/2012", FORMATTER), false),
 					new Jugador(34298, "FEN LI ", "SUECA", LocalDate.parse("01/09/2010", FORMATTER), false),
 					new Jugador(9486, "MARIA XIAO YAO", "ESPAÑOLA", LocalDate.parse("01/09/2009", FORMATTER), false),
-					new Jugador(29161, "MIRIAN SEGURA FERNANDEZ", "ESPAÑOLA", LocalDate.parse("01/09/2008", FORMATTER), false),
-					new Jugador(31669, "SILVIA ASIS DE SOUZA ERDELJI", "HUNGARA", LocalDate.parse("01/09/2007", FORMATTER), false)
+					new Jugador(29161, "MIRIAN SEGURA FERNANDEZ", "ESPAÑOLA", LocalDate.parse("01/09/2003", FORMATTER), false),
+					new Jugador(31669, "SILVIA ASIS DE SOUZA ERDELJI", "HUNGARA", LocalDate.parse("01/09/1995", FORMATTER), false)
 					));
 			equipo3.setJugadores(List.of(
 					new Jugador(41902, "AIRI ABE", "JAPONES", LocalDate.parse("01/09/2012", FORMATTER), false),
-					new Jugador(36159, "ANETA JUSTYNA OLENZKA-DZIENIEL ", "POLACA", LocalDate.parse("01/09/2010", FORMATTER), false),
-					new Jugador(27607, "CAMILA RENATA MOSCOSO RAYA", "ESPAÑOLA", LocalDate.parse("01/09/2009", FORMATTER), false),
+					new Jugador(36159, "ANETA JUSTYNA OLENZKA-DZIENIEL ", "POLACA", LocalDate.parse("01/09/2002", FORMATTER), false),
+					new Jugador(27607, "CAMILA RENATA MOSCOSO RAYA", "ESPAÑOLA", LocalDate.parse("01/09/2005", FORMATTER), false),
 					new Jugador(33839, "CHARLOTTE CAREY ", "GALESA", LocalDate.parse("01/09/2008", FORMATTER), false),
 					new Jugador(24301, "IRINA GIMENO FONT", "ESPAÑOLA", LocalDate.parse("01/09/2007", FORMATTER), false)
 					));
 			equipo4.setJugadores(List.of(
-					new Jugador(42191, "ALBA GONZALEZ LAZARO", "ESPAÑOLA", LocalDate.parse("01/09/2012", FORMATTER), false),
-					new Jugador(40685, "ALICIA DONCEL CARBALLO", "HUNGARA", LocalDate.parse("01/09/2010", FORMATTER), false),
-					new Jugador(27846, "ANNAMARIA ERDELYI ", "Español", LocalDate.parse("01/09/2009", FORMATTER), false),
-					new Jugador(22454, "CANDELA MOLERO ", "ARGENTINA", LocalDate.parse("01/09/2008", FORMATTER), false),
-					new Jugador(8357, "CLARA IZQUIERDO ALONSO", "ESPAÑOLA", LocalDate.parse("01/09/2007", FORMATTER), false)
+					new Jugador(42191, "ALBA GONZALEZ LAZARO", "ESPAÑOLA", LocalDate.parse("01/09/2005", FORMATTER), false),
+					new Jugador(40685, "ALICIA DONCEL CARBALLO", "HUNGARA", LocalDate.parse("01/09/2001", FORMATTER), false),
+					new Jugador(27846, "ANNAMARIA ERDELYI ", "Español", LocalDate.parse("01/09/2002", FORMATTER), false),
+					new Jugador(22454, "CANDELA MOLERO ", "ARGENTINA", LocalDate.parse("01/09/1990", FORMATTER), false),
+					new Jugador(8357, "CLARA IZQUIERDO ALONSO", "ESPAÑOLA", LocalDate.parse("01/09/2000", FORMATTER), false)
 					));
 			equipo5.setJugadores(List.of(
-					new Jugador(38624, "AINA ARAQUE SOLER", "ESPAÑOLA", LocalDate.parse("01/09/2012", FORMATTER), false),
-					new Jugador(17755, "ALBA VIRGILI CAPDEVILA", "ESPAÑOLA", LocalDate.parse("01/09/2010", FORMATTER), false),
+					new Jugador(38624, "AINA ARAQUE SOLER", "ESPAÑOLA", LocalDate.parse("01/09/2003", FORMATTER), false),
+					new Jugador(17755, "ALBA VIRGILI CAPDEVILA", "ESPAÑOLA", LocalDate.parse("01/09/2003", FORMATTER), false),
 					new Jugador(41971, "DEIMANTE ADLYTE ", "LITUANA", LocalDate.parse("01/09/2009", FORMATTER), false),
-					new Jugador(19272, "ELVIRA FIONA RAD HIND", "ESPAÑOLA", LocalDate.parse("01/09/2008", FORMATTER), false),
+					new Jugador(19272, "ELVIRA FIONA RAD HIND", "ESPAÑOLA", LocalDate.parse("01/09/1994", FORMATTER), false),
 					new Jugador(42996, "HINA KIZUKA ", "JAPONES", LocalDate.parse("01/09/2007", FORMATTER), false)
 					));
 			equipo6.setJugadores(List.of(
-					new Jugador(19220, "ANA PEDREGOSA LADRON DE GUEVARA", "ESPAÑOLA", LocalDate.parse("01/09/2012", FORMATTER), false),
-					new Jugador(19691, "ANGELA RODRÍGUEZ GARCIA", "ESPAÑOLA", LocalDate.parse("01/09/2010", FORMATTER), false),
-					new Jugador(36884, "CLAUDIA RODRIGUEZ ZABALETA", "ESPAÑOLA", LocalDate.parse("01/09/2009", FORMATTER), false),
+					new Jugador(19220, "ANA PEDREGOSA LADRON DE GUEVARA", "ESPAÑOLA", LocalDate.parse("01/09/2002", FORMATTER), false),
+					new Jugador(19691, "ANGELA RODRÍGUEZ GARCIA", "ESPAÑOLA", LocalDate.parse("01/09/2006", FORMATTER), false),
+					new Jugador(36884, "CLAUDIA RODRIGUEZ ZABALETA", "ESPAÑOLA", LocalDate.parse("01/09/2001", FORMATTER), false),
 					new Jugador(41880, "DAEUN LEE", "JAPONES", LocalDate.parse("01/09/2008", FORMATTER), false),
 					new Jugador(17118, "IOANA TECLA GHEMES", "ESPAÑOLA", LocalDate.parse("01/09/2007", FORMATTER), false)
 					));
