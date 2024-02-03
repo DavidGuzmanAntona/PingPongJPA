@@ -126,15 +126,13 @@ public class ConsultasCompeticion {
 
 	public static void consulta8() {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
-		Query query = entityManager.createQuery(
-				"SELECT e FROM Equipo e ORDER BY e.puntosLiga DESC", Equipo.class);
+		Query query = entityManager.createQuery("SELECT e FROM Equipo e ORDER BY e.puntosLiga DESC", Equipo.class);
 		List<Equipo> equipos = query.getResultList();
-		System.out.println(
-				"## 8. Visualiza la clasificación al inicio, a mitad de temporada y al final de esta. ##");
+		System.out.println("## 8. Visualiza la clasificación al inicio, a mitad de temporada y al final de esta. ##");
 		System.out.println("Al final de la liga, la clasificacion es:");
 		for (Equipo equipo : equipos) {
-            System.out.println("- Equipo: " + equipo.getNombre() + ", Puntos de liga: " + equipo.getPuntosLiga());
-        }
+			System.out.println("- Equipo: " + equipo.getNombre() + ", Puntos de liga: " + equipo.getPuntosLiga());
+		}
 		System.out.println("##################### FIN Consulta 8 #################################");
 	}
 
@@ -179,8 +177,56 @@ public class ConsultasCompeticion {
 
 	public static void consulta11() {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
-		Query query = entityManager.createNamedQuery("Jugador.findNuevosFichajes", Jugador.class);
+
+		Query query = entityManager.createQuery("SELECT j FROM Jugador j WHERE j.nuevoFichaje = :nuevo", Jugador.class);
+		query.setParameter("nuevo", true);
+		List<Jugador> nuevosCompeticion = query.getResultList();
+		System.out.println("## 10. Enumera todos los fichajes realizados entre los diferentes equipos. ##");
+		for (Jugador jugador : nuevosCompeticion) {
+			System.out.println("Nombre: " + jugador.getNombre());		
+		}
+		System.out.println("##################### FIN Consulta 11 #################################");
+	}
+
+	public static void consulta12() {
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
+		Query query = entityManager.createQuery("SELECT COUNT(j) FROM Jugador j");
+		Long totalDeportistas = (Long) query.getSingleResult();
+		System.out.println("## 12. Realiza un recuento del total de deportistas que participan en la competición. ##");
+		System.out.println("Total de deportistas que participan en la competición: " + totalDeportistas);
+		System.out.println("##################### FIN Consulta 12 #################################");
+	}
+
+	public static void consulta13(String equipo1, String equipo2) {
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
+		String jpql = "SELECT p FROM Patrocinador p " + "JOIN p.equiposPatrocinados e " + "WHERE e.nombre = :nombre1 "
+				+ "AND EXISTS (SELECT 1 FROM Patrocinador p2 " + "JOIN p2.equiposPatrocinados e2 "
+				+ "WHERE e2.nombre = :nombre2 " + "AND p2 = p)";
+		Query query = entityManager.createQuery(jpql, Patrocinador.class);
+		query.setParameter("nombre1", equipo1);
+		query.setParameter("nombre2", equipo2);
+		List<Patrocinador> patrocinadoresComunes = query.getResultList();
+		System.out.println("## 13. Dado dos equipos muestra sus patrocinadores comunes. ##");
+		System.out.println("Patrocinadores comunes entre los equipos " + equipo1 + " y " + equipo2 + ":");
+		for (Patrocinador patrocinador : patrocinadoresComunes) {
+			System.out.println("- " + patrocinador.getNombrePatrocinador());
+		}
+		System.out.println("##################### FIN Consulta 13 #################################");
 
 	}
 
+	public static void consulta14() {
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
+
+		Query query = entityManager.createQuery("SELECT j FROM Jugador j WHERE j.nuevoJugadorEnCompeticion = :nuevo", Jugador.class);
+		query.setParameter("nuevo", true);
+		List<Jugador> nuevosCompeticion = query.getResultList();
+		for (Jugador jugador : nuevosCompeticion) {
+			System.out.println("Nombre: " + jugador.getNombre());
+		}
+		System.out.println("## 14. Utiliza CriteriaQuery para poder filtrar por todos los atributos de los deportistas, edad, nombre, equipo, etc ordenados por un criterio. Lanza tres ejemplos distintos con diferentes atributos, uno debe incluir todos los atributos y el resto solo una parte de ellos. ##");
+		
+		
+		System.out.println("##################### FIN Consulta 14 #################################");
+	}
 }

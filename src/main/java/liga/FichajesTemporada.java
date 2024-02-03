@@ -52,21 +52,19 @@ public class FichajesTemporada {
 	
 	static void nuevoFichajex2(EquipoImplementacionDAO eIDAO) {
 		Jugador nuevoJugador = new Jugador(19107, "LUCIA LOPEZ CUENCA", "ESPAÑOLA",
-				LocalDate.parse("01/09/2007", FORMATTER), true);
+				LocalDate.parse("01/09/2007", FORMATTER), true, true);
 		Equipo equipoNuevoJugador = eIDAO.findById(3);
 		nuevoJugador.setEquipo(equipoNuevoJugador);
 		FichajesTemporada.ficharJugador(equipoNuevoJugador, nuevoJugador);
 
 		Jugador nuevoJugador2 = new Jugador(39244, "MARI GRACE BALDWIN", "INGLESA",
-				LocalDate.parse("05/06/1998", FORMATTER), true);
+				LocalDate.parse("05/06/1998", FORMATTER), true, true);
 		Equipo equipoNuevoJugador2 = eIDAO.findById(4);
 		nuevoJugador2.setEquipo(equipoNuevoJugador2);
 		FichajesTemporada.ficharJugador(equipoNuevoJugador2, nuevoJugador2);
 	}
 	
-	
-	Jugador nuevoJugador = new Jugador(19107, "LUCIA LOPEZ CUENCA",  "ESPAÑOLA", LocalDate.parse("01/09/2010", FORMATTER), true);
-	
+
 	public static void ficharJugador(Equipo equipo, Jugador jugadorNuevo) {
 	    equipo.getJugadores().add(jugadorNuevo);
 	    equipoIDAO.update(equipo);
@@ -78,8 +76,6 @@ public class FichajesTemporada {
 
 	
 	public static void intercambioJugadores(Equipo equipo1, Equipo equipo2, Jugador jugador1, Jugador jugador2) {	
-		
-		
 
 	//Cambio de equipo del jugador
 	jugador1.setNuevoFichaje(true);

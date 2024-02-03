@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "Player")
 @NamedQuery(
 	    name = "Jugador.findNuevosFichajes",
-	    query = "SELECT j FROM Jugador j WHERE j.nuevoFichaje = true")
+	    query = "SELECT j FROM Jugador j WHERE j.nuevoJugadorEnCompeticion = true")
 
 public class Jugador {
 
@@ -39,6 +39,9 @@ public class Jugador {
 	
 	@Column(name= "NewPlayer24")
 	private boolean nuevoFichaje;
+	
+	@Column(name= "NewPlayerInCompetition")
+	private boolean nuevoJugadorEnCompeticion;
 
 //Relaciones
 
@@ -46,23 +49,26 @@ public class Jugador {
 	@JoinColumn(name = "ID_EQUIPO")
 	private Equipo equipo;
 
+//Constructores
+	
 	public Jugador() {
 		super();
 	}
 	
-	public Jugador(int licencia, String nombre, String nacionalidad, LocalDate edad, boolean nuevoFichaje) {
+
+	public Jugador(int licencia, String nombre, String nacionalidad, LocalDate edad, boolean nuevoFichaje,
+			boolean nuevoJugadorEnCompeticion) {
 		super();
 		this.licencia = licencia;
 		this.nombre = nombre;
 		this.nacionalidad = nacionalidad;
 		this.edad = edad;
 		this.nuevoFichaje = nuevoFichaje;
+		this.nuevoJugadorEnCompeticion = nuevoJugadorEnCompeticion;
 	}
-	
-	
-// Getters y Setters
 
-	
+	// Getters y Setters
+
 
 	public int getLicencia() {
 		return licencia;
@@ -115,6 +121,13 @@ public class Jugador {
 	public void setNuevoFichaje(boolean nuevoFichaje) {
 		this.nuevoFichaje = nuevoFichaje;
 	}
+	public boolean isNuevoJugadorEnCompeticion() {
+		return nuevoJugadorEnCompeticion;
+	}
+
+	public void setNuevoJugadorEnCompeticion(boolean nuevoJugadorEnCompeticion) {
+		this.nuevoJugadorEnCompeticion = nuevoJugadorEnCompeticion;
+	}
 
 	
 	
@@ -124,6 +137,8 @@ public class Jugador {
 		return "Jugador [idDeportista=" + idDeportista + ", licencia=" + licencia + ", nombre=" + nombre
 				+ ", nacionalidad=" + nacionalidad + ", edad=" + edad + "]";
 	}
+
+
 
 
 	

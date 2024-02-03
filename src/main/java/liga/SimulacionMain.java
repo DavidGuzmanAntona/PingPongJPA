@@ -47,10 +47,13 @@ public class SimulacionMain {
 	//	ConsultasCompeticion.consulta5("IRUN LEKA ENEA");
 	//	ConsultasCompeticion.consulta6("UCAM CARTAGENA TM");		
 	//	ConsultasCompeticion.consulta7();
-		ConsultasCompeticion.consulta8();
+	//	ConsultasCompeticion.consulta8();
 	//	ConsultasCompeticion.consulta9();
 	//	ConsultasCompeticion.consulta10();
 	//	ConsultasCompeticion.consulta11();
+	//	ConsultasCompeticion.consulta12();
+	//	ConsultasCompeticion.consulta13("MIRÓ GANXETS REUS", "IRUN LEKA ENEA");
+		//ConsultasCompeticion.consulta14();
 
 		
 	   
