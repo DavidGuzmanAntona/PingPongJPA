@@ -11,23 +11,31 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+/**
+ * Entidad con las características del patrocinador, anotaciones y relaciones
+ * incluidas para JPA
+ * 
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
 @Entity
 @Table(name = "Sponsor")
 public class Patrocinador {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "IdSponsor")
 	private Long idPatrocinador;
-	
+
 	@Column(name = "SponsorName")
 	private String nombrePatrocinador;
-	
+
 	@Column(name = "MoneySeason")
 	private int dineroPatrocinio;
-	
+
 //Relaciones
-	
+
 	@ManyToMany(mappedBy = "patrocinador")
 	private List<Equipo> equiposPatrocinados;
 
@@ -72,9 +80,5 @@ public class Patrocinador {
 	public void setEquiposPatrocinados(List<Equipo> equiposPatrocinados) {
 		this.equiposPatrocinados = equiposPatrocinados;
 	}
-	
 
-
-	
-	
 }

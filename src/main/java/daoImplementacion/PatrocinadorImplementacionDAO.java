@@ -11,6 +11,14 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import liga.SimulacionMain;
 
+/**
+ * Esta clase implementa el DAO genérico para la entidad de Patrocinador
+ * realizando especificamente un CRUD mediante métodos reutilizables
+ * 
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
 public class PatrocinadorImplementacionDAO implements DAOGenerico<Patrocinador> {
 
 	@Override
@@ -20,7 +28,6 @@ public class PatrocinadorImplementacionDAO implements DAOGenerico<Patrocinador> 
 		entityManager.persist(patrocinadorInsertar);
 		entityManager.getTransaction().commit();
 		entityManager.close();
-		
 
 	}
 
@@ -31,7 +38,6 @@ public class PatrocinadorImplementacionDAO implements DAOGenerico<Patrocinador> 
 		entityManager.merge(patrocinador);
 		entityManager.getTransaction().commit();
 		entityManager.close();
-		
 
 	}
 
@@ -43,7 +49,6 @@ public class PatrocinadorImplementacionDAO implements DAOGenerico<Patrocinador> 
 		entityManager.remove(patrocinadorDelete);
 		entityManager.getTransaction().commit();
 		entityManager.close();
-		
 
 	}
 
@@ -58,8 +63,7 @@ public class PatrocinadorImplementacionDAO implements DAOGenerico<Patrocinador> 
 	public List<Patrocinador> findAll() {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		TypedQuery<Patrocinador> query = entityManager.createQuery("SELECT j FROM Patrocinador j", Patrocinador.class);
-        return query.getResultList();
+		return query.getResultList();
 	}
 
 }
-

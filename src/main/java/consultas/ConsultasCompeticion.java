@@ -1,26 +1,30 @@
 package consultas;
 
 import java.time.LocalDate;
+
 import java.time.Period;
 import java.util.List;
 
-import daoImplementacion.JugadorImplementacionDAO;
 import entidades.Competicion;
 import entidades.Equipo;
 import entidades.Jugador;
 import entidades.Patrocinador;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import liga.SimulacionMain;
 
+/**
+ * Esta clase se ocupa de realizar los métodos de las consultas a la base de
+ * datos. Cada método es una consulta diferente en relación a las requeridas por el ejercicio
+ * 
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
 public class ConsultasCompeticion {
-	 
-	static JugadorImplementacionDAO DAOJugador= new JugadorImplementacionDAO();
 
 	public static void consulta1() {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
@@ -188,7 +192,7 @@ public class ConsultasCompeticion {
 		List<Jugador> nuevosCompeticion = query.getResultList();
 		System.out.println("## 10. Enumera todos los fichajes realizados entre los diferentes equipos. ##");
 		for (Jugador jugador : nuevosCompeticion) {
-			System.out.println("Nombre: " + jugador.getNombre());		
+			System.out.println("Nombre: " + jugador.getNombre());
 		}
 		System.out.println("##################### FIN Consulta 11 #################################");
 	}
@@ -219,81 +223,81 @@ public class ConsultasCompeticion {
 		System.out.println("##################### FIN Consulta 13 #################################");
 
 	}
-	public static void consulta14_1() {
-		//List <Jugador> jugadores= DAOJugador.findAll();
-		System.out.println("## 14_1. Utiliza CriteriaQuery para poder filtrar por todos los atributos de los deportistas, edad, nombre, equipo, etc ordenados por un criterio. Lanza tres ejemplos distintos con diferentes atributos, uno debe incluir todos los atributos y el resto solo una parte de ellos. ##");
 
-		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();	
-		CriteriaBuilder cb= entityManager.getCriteriaBuilder();
-		CriteriaQuery<Jugador> ConfiConsulta= cb.createQuery(Jugador.class);
+	public static void consulta14_1() {
+		// List <Jugador> jugadores= DAOJugador.findAll();
+		System.out.println(
+				"## 14_1. Utiliza CriteriaQuery para poder filtrar por todos los atributos de los deportistas, edad, nombre, equipo, etc ordenados por un criterio. Lanza tres ejemplos distintos con diferentes atributos, uno debe incluir todos los atributos y el resto solo una parte de ellos. ##");
+
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Jugador> ConfiConsulta = cb.createQuery(Jugador.class);
 		Root<Jugador> raizJugador = ConfiConsulta.from(Jugador.class);
 		ConfiConsulta.select(raizJugador);
 		ConfiConsulta.orderBy(cb.desc(raizJugador.get("nacionalidad")));
 		System.out.println("Consulta con todos los jugadores y sus atributos");
-		List <Jugador> jugadores = entityManager.createQuery(ConfiConsulta).getResultList();
+		List<Jugador> jugadores = entityManager.createQuery(ConfiConsulta).getResultList();
 		for (Jugador jugador : jugadores) {
 			System.out.println("- " + jugador.toString());
-		
+
 		}
-		
+
 		System.out.println("##################### FIN Consulta 14_1 #################################");
-		
+
 	}
 
 	public static void consulta14_2() {
-		System.out.println("## 14_2. Utiliza CriteriaQuery. Consulta con todos los jugadores , atributos nombre, id, licincia, ordenados por licincia##");
+		System.out.println(
+				"## 14_2. Utiliza CriteriaQuery. Consulta con todos los jugadores , atributos nombre, id, licincia, ordenados por licincia##");
 
-		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();	
-		CriteriaBuilder cb= entityManager.getCriteriaBuilder();
-		
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+
 		CriteriaQuery<Object[]> criteriaQuery = cb.createQuery(Object[].class);
-        Root<Jugador> jugadorRoot = criteriaQuery.from(Jugador.class);
-		
-        criteriaQuery.multiselect(
-                jugadorRoot.get("nombre"),
-                jugadorRoot.get("licencia"),
-                jugadorRoot.get("id"));
-        
-        criteriaQuery.orderBy(cb.asc(jugadorRoot.get("licencia")));
-		
-        List<Object[]> jugadores = entityManager.createQuery(criteriaQuery).getResultList();
-        for (Object[] resultado : jugadores) {
-        	String nombre = (String) resultado[0];
-            Integer licencia = (Integer) resultado[1];
-            Integer id = (Integer) resultado[2];
-            System.out.println("- Nombre: " + nombre + ", Licencia: " + licencia + ", ID: " + id);
-        }
-		
+		Root<Jugador> jugadorRoot = criteriaQuery.from(Jugador.class);
+
+		criteriaQuery.multiselect(jugadorRoot.get("nombre"), jugadorRoot.get("licencia"), jugadorRoot.get("id"));
+
+		criteriaQuery.orderBy(cb.asc(jugadorRoot.get("licencia")));
+
+		List<Object[]> jugadores = entityManager.createQuery(criteriaQuery).getResultList();
+		for (Object[] resultado : jugadores) {
+			String nombre = (String) resultado[0];
+			Integer licencia = (Integer) resultado[1];
+			Integer id = (Integer) resultado[2];
+			System.out.println("- Nombre: " + nombre + ", Licencia: " + licencia + ", ID: " + id);
+		}
+
 		System.out.println("##################### FIN Consulta 14_2 #################################");
-		
+
 	}
 
 	public static void consulta14_3() {
-		System.out.println("## 14_2. Utiliza CriteriaQuery. Consulta con todos los jugadores , atributos licencia, edad, nacionalidad, ordenados por edad ##");
+		System.out.println(
+				"## 14_2. Utiliza CriteriaQuery. Consulta con todos los jugadores , atributos licencia, edad, nacionalidad, ordenados por edad ##");
 
-		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();	
-		CriteriaBuilder cb= entityManager.getCriteriaBuilder();
-		
+		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+
 		CriteriaQuery<Object[]> criteriaQuery = cb.createQuery(Object[].class);
-        Root<Jugador> jugadorRoot = criteriaQuery.from(Jugador.class);
-		
-        criteriaQuery.multiselect(
-                jugadorRoot.get("licencia"),
-                jugadorRoot.get("edad"),
-                jugadorRoot.get("nacionalidad"));
-        
-        criteriaQuery.orderBy(cb.asc(jugadorRoot.get("edad")));
-		
-		System.out.println("Consulta con todos los jugadores , atributos licencia, edad, nacionalidad, ordenados por edad");
-        List<Object[]> jugadores = entityManager.createQuery(criteriaQuery).getResultList();
-        for (Object[] resultado : jugadores) {
-        	Integer licencia = (Integer) resultado[0];
-            LocalDate edad = (LocalDate) resultado[1];
-            String nacionalidad = (String) resultado[2];
-            System.out.println("- Licencia: " + licencia + ", Edad: " + edad + ", Nacionalidad: " + nacionalidad);
-        }
-		
+		Root<Jugador> jugadorRoot = criteriaQuery.from(Jugador.class);
+
+		criteriaQuery.multiselect(jugadorRoot.get("licencia"), jugadorRoot.get("edad"),
+				jugadorRoot.get("nacionalidad"));
+
+		criteriaQuery.orderBy(cb.asc(jugadorRoot.get("edad")));
+
+		System.out.println(
+				"Consulta con todos los jugadores , atributos licencia, edad, nacionalidad, ordenados por edad");
+		List<Object[]> jugadores = entityManager.createQuery(criteriaQuery).getResultList();
+		for (Object[] resultado : jugadores) {
+			Integer licencia = (Integer) resultado[0];
+			LocalDate edad = (LocalDate) resultado[1];
+			String nacionalidad = (String) resultado[2];
+			System.out.println("- Licencia: " + licencia + ", Edad: " + edad + ", Nacionalidad: " + nacionalidad);
+		}
+
 		System.out.println("##################### FIN Consulta 14_2 #################################");
-		
+
 	}
 }

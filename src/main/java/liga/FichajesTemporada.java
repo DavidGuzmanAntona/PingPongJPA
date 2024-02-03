@@ -12,15 +12,22 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+/**
+ * Esta clase contiene los métodos para recrear una serie de fichajes al final
+ * de la temporada de juego. Simulamos varios casos: cesion de jugadores, nuevas
+ * incorporaciones y salidas de jugadores.
+ * 
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
 public class FichajesTemporada {
 
 	private static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-
 	static EquipoImplementacionDAO equipoIDAO = new EquipoImplementacionDAO();
 	static JugadorImplementacionDAO jugadorIDAO = new JugadorImplementacionDAO();
-	
-	
+
 	static void intercambiox2(EquipoImplementacionDAO eIDAO, JugadorImplementacionDAO jIDAO) {
 		Equipo equipo1 = eIDAO.findById(1);
 		Equipo equipo2 = eIDAO.findById(2);
@@ -38,18 +45,15 @@ public class FichajesTemporada {
 		jugador4.setNuevoFichaje(true);
 		FichajesTemporada.intercambioJugadores(equipo5, equipo6, jugador3, jugador4);
 	}
-	
-	
+
 	static void eliminarx2(JugadorImplementacionDAO jIDAO) {
 		Jugador jugadorEliminar = jIDAO.findById(13);
 		FichajesTemporada.eliminaJugador(jugadorEliminar);
-		
+
 		Jugador jugadorEliminar2 = jIDAO.findById(23);
 		FichajesTemporada.eliminaJugador(jugadorEliminar2);
 	}
-	
-	
-	
+
 	static void nuevoFichajex2(EquipoImplementacionDAO eIDAO) {
 		Jugador nuevoJugador = new Jugador(19107, "LUCIA LOPEZ CUENCA", "ESPAÑOLA",
 				LocalDate.parse("01/09/2007", FORMATTER), true, true);
@@ -63,47 +67,41 @@ public class FichajesTemporada {
 		nuevoJugador2.setEquipo(equipoNuevoJugador2);
 		FichajesTemporada.ficharJugador(equipoNuevoJugador2, nuevoJugador2);
 	}
-	
 
 	public static void ficharJugador(Equipo equipo, Jugador jugadorNuevo) {
-	    equipo.getJugadores().add(jugadorNuevo);
-	    equipoIDAO.update(equipo);
+		equipo.getJugadores().add(jugadorNuevo);
+		equipoIDAO.update(equipo);
 	}
-	
-	List <Equipo> equiposEnCompeticion= equipoIDAO.findAll();	
-	List<Jugador> jugadoresCompeticion= jugadorIDAO.findAll();
-	
 
-	
-	public static void intercambioJugadores(Equipo equipo1, Equipo equipo2, Jugador jugador1, Jugador jugador2) {	
+	List<Equipo> equiposEnCompeticion = equipoIDAO.findAll();
+	List<Jugador> jugadoresCompeticion = jugadorIDAO.findAll();
 
-	//Cambio de equipo del jugador
-	jugador1.setNuevoFichaje(true);
-	jugador1.setEquipo(equipo2);
-	jugadorIDAO.update(jugador1);
-	
-	jugador2.setNuevoFichaje(true);
-	jugador2.setEquipo(equipo1);
-	jugadorIDAO.update(jugador2);
-	
-	//Cambio de equipo del jugador
-	jugador1.setNuevoFichaje(true);
-	jugador1.setEquipo(equipo2);
-	jugadorIDAO.update(jugador1);
-	
-	jugador2.setNuevoFichaje(true);
-	jugador2.setEquipo(equipo1);
-	jugadorIDAO.update(jugador2);
-	
+	public static void intercambioJugadores(Equipo equipo1, Equipo equipo2, Jugador jugador1, Jugador jugador2) {
+
+		// Cambio de equipo del jugador
+		jugador1.setNuevoFichaje(true);
+		jugador1.setEquipo(equipo2);
+		jugadorIDAO.update(jugador1);
+
+		jugador2.setNuevoFichaje(true);
+		jugador2.setEquipo(equipo1);
+		jugadorIDAO.update(jugador2);
+
+		// Cambio de equipo del jugador
+		jugador1.setNuevoFichaje(true);
+		jugador1.setEquipo(equipo2);
+		jugadorIDAO.update(jugador1);
+
+		jugador2.setNuevoFichaje(true);
+		jugador2.setEquipo(equipo1);
+		jugadorIDAO.update(jugador2);
+
 	}
-	
 
 	public static void eliminaJugador(Jugador jugador) {
-		int identificador= jugador.getIdDeportista();
+		int identificador = jugador.getIdDeportista();
 		jugadorIDAO.delete(identificador);
-		
-			
-		
+
 	}
 
 }

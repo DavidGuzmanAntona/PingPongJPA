@@ -11,7 +11,15 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import liga.SimulacionMain;
 
-public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
+/**
+ * Esta clase implementa el DAO genérico para la entidad de Jugador
+ * realizando especificamente un CRUD mediante métodos reutilizables
+ * 
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
+public class JugadorImplementacionDAO implements DAOGenerico<Jugador> {
 
 	@Override
 	public void insertar(Jugador jugador) {
@@ -20,7 +28,7 @@ public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 		entityManager.persist(jugador);
 		entityManager.getTransaction().commit();
 		entityManager.close();
-		
+
 	}
 
 	@Override
@@ -35,12 +43,12 @@ public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 	@Override
 	public void delete(int idJugador) {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
-		Jugador jugadorDelete= entityManager.find(Jugador.class, idJugador);
+		Jugador jugadorDelete = entityManager.find(Jugador.class, idJugador);
 		entityManager.getTransaction().begin();
 		entityManager.remove(jugadorDelete);
 		entityManager.getTransaction().commit();
 		entityManager.close();
-		
+
 	}
 
 	@Override
@@ -54,9 +62,8 @@ public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 	public List<Jugador> findAll() {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		TypedQuery<Jugador> query = entityManager.createQuery("SELECT j FROM Jugador j", Jugador.class);
-        return query.getResultList();
+		return query.getResultList();
 	}
-
 
 	public void updateEquipo(int idJugador, Equipo equipo) {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
@@ -66,7 +73,7 @@ public class JugadorImplementacionDAO implements DAOGenerico<Jugador>{
 		entityManager.merge(jugadorUpdate);
 		entityManager.getTransaction().commit();
 		entityManager.close();
-		
+
 	}
 
 }

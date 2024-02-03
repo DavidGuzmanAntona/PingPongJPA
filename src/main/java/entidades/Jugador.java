@@ -12,11 +12,18 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
+/**
+ * Entidad con las características del Jugador, anotaciones y relaciones
+ * incluidas para JPA
+ * 
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
+
 @Entity
 @Table(name = "Player")
-@NamedQuery(
-	    name = "Jugador.findNuevosFichajes",
-	    query = "SELECT j FROM Jugador j WHERE j.nuevoJugadorEnCompeticion = true")
+@NamedQuery(name = "Jugador.findNuevosFichajes", query = "SELECT j FROM Jugador j WHERE j.nuevoJugadorEnCompeticion = true")
 
 public class Jugador {
 
@@ -36,11 +43,11 @@ public class Jugador {
 
 	@Column(name = "BirthDate")
 	private LocalDate edad;
-	
-	@Column(name= "NewPlayer24")
+
+	@Column(name = "NewPlayer24")
 	private boolean nuevoFichaje;
-	
-	@Column(name= "NewPlayerInCompetition")
+
+	@Column(name = "NewPlayerInCompetition")
 	private boolean nuevoJugadorEnCompeticion;
 
 //Relaciones
@@ -50,11 +57,10 @@ public class Jugador {
 	private Equipo equipo;
 
 //Constructores
-	
+
 	public Jugador() {
 		super();
 	}
-	
 
 	public Jugador(int licencia, String nombre, String nacionalidad, LocalDate edad, boolean nuevoFichaje,
 			boolean nuevoJugadorEnCompeticion) {
@@ -68,7 +74,6 @@ public class Jugador {
 	}
 
 	// Getters y Setters
-
 
 	public int getLicencia() {
 		return licencia;
@@ -113,7 +118,7 @@ public class Jugador {
 	public int getIdDeportista() {
 		return idDeportista;
 	}
-	
+
 	public boolean isNuevoFichaje() {
 		return nuevoFichaje;
 	}
@@ -121,6 +126,7 @@ public class Jugador {
 	public void setNuevoFichaje(boolean nuevoFichaje) {
 		this.nuevoFichaje = nuevoFichaje;
 	}
+
 	public boolean isNuevoJugadorEnCompeticion() {
 		return nuevoJugadorEnCompeticion;
 	}
@@ -129,18 +135,11 @@ public class Jugador {
 		this.nuevoJugadorEnCompeticion = nuevoJugadorEnCompeticion;
 	}
 
-	
-	
 //To String	
 	@Override
 	public String toString() {
 		return "Jugador [idDeportista=" + idDeportista + ", licencia=" + licencia + ", nombre=" + nombre
 				+ ", nacionalidad=" + nacionalidad + ", edad=" + edad + "]";
 	}
-
-
-
-
-	
 
 }

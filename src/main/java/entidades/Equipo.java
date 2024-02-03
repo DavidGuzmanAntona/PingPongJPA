@@ -16,6 +16,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+/**Entidad con las características del Equipo, anotaciones y relaciones incluidas para JPA
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
+
 
 @Entity
 @Table(name = "Team")

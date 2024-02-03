@@ -11,6 +11,15 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+/**
+ * Esta clase simula una jornada completa de la competicion de manera que los
+ * Equipos se enfrentan entre ellos y obtienen una cantidad de puntos.
+ * Persistimos los resultados a la BD y la actualizamos
+ * 
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
 public class SimulacionPartidos {
 
 	public static void simularJornada(List<Equipo> equiposLiga) {
@@ -18,15 +27,15 @@ public class SimulacionPartidos {
 		System.out.println("Iniciando simulacion de Jornada:");
 
 		Random random = new Random();
-		int contador=0;
+		int contador = 0;
 
 		for (int i = 0; i < equiposLiga.size(); i++) {
-			
+
 			for (int j = i + 1; j < equiposLiga.size(); j++) {
 				Equipo equipoLocal = equiposLiga.get(i);
 				Equipo equipoVisitante = equiposLiga.get(j);
 				int equipoLocRes = random.nextInt(6);
-				int equipoVisRes = (int) (Math.random()*6);
+				int equipoVisRes = (int) (Math.random() * 6);
 
 				if (equipoLocRes > equipoVisRes) {
 					equipoLocal.sumarVictoria();
@@ -51,14 +60,14 @@ public class SimulacionPartidos {
 					equipoVisitante.sumarPuntos(1);
 
 					System.out.println("El equipo: " + equipoLocal.getNombre() + "Empata el partido contra: "
-						+ equipoVisitante.getNombre());
+							+ equipoVisitante.getNombre());
 				}
 				equipoLocal.sumarPartidos();
 				equipoVisitante.sumarPartidos();
-				
+
 			}
 			contador++;
-			if(contador==1||contador==3) {
+			if (contador == 1 || contador == 3) {
 				updateDBResultados(equiposLiga);
 				ConsultasCompeticion.consulta8();
 			}

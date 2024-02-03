@@ -12,6 +12,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+/**Entidad con las características de la competicion
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
+
 
 @Entity
 @Table (name= "Competition")

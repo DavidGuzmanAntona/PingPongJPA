@@ -10,6 +10,14 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
 import liga.SimulacionMain;
 
+/**
+ * Esta clase implementa el DAO genérico para la entidad de Equipo
+ * realizando especificamente un CRUD mediante métodos reutilizables
+ * 
+ * @author DavidGuzmán
+ * @version 1.0
+ * @since 2024-02-03
+ */
 public class EquipoImplementacionDAO implements DAOGenerico<Equipo> {
 
 	@Override
@@ -20,7 +28,6 @@ public class EquipoImplementacionDAO implements DAOGenerico<Equipo> {
 		entityManager.getTransaction().commit();
 		entityManager.close();
 
-		
 	}
 
 	@Override
@@ -31,19 +38,17 @@ public class EquipoImplementacionDAO implements DAOGenerico<Equipo> {
 		entityManager.getTransaction().commit();
 		entityManager.close();
 
-		
 	}
 
 	@Override
 	public void delete(int idEquipo) {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
-		Equipo equipoDelete= entityManager.find(Equipo.class, idEquipo);
+		Equipo equipoDelete = entityManager.find(Equipo.class, idEquipo);
 		entityManager.getTransaction().begin();
 		entityManager.remove(equipoDelete);
 		entityManager.getTransaction().commit();
 		entityManager.close();
 
-		
 	}
 
 	@Override
@@ -57,10 +62,7 @@ public class EquipoImplementacionDAO implements DAOGenerico<Equipo> {
 	public List<Equipo> findAll() {
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
 		TypedQuery<Equipo> query = entityManager.createQuery("SELECT j FROM Equipo j", Equipo.class);
-        return query.getResultList();
+		return query.getResultList();
 	}
 
-
-
 }
-
