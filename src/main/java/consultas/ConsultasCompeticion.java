@@ -35,7 +35,7 @@ public class ConsultasCompeticion {
 		System.out.println(
 				"## 1. Utiliza una consulta nativa(NativeQuery) para obtener las características de la competición. ##");
 		System.out.println(competicion.toString());
-		System.out.println("##################### FIN Consulta 1 #################################");
+		System.out.println("##################### FIN Consulta 1 ################################# \n");
 
 	}
 
@@ -49,7 +49,7 @@ public class ConsultasCompeticion {
 		for (Equipo equipo : equipos) {
 			System.out.println("Nombre Equipo: " + equipo.getNombre());
 		}
-		System.out.println("##################### FIN Consulta 2 #################################");
+		System.out.println("##################### FIN Consulta 2 ################################# \n");
 	}
 
 	public static void consulta3(String nombreEquipo) {
@@ -63,7 +63,7 @@ public class ConsultasCompeticion {
 		for (Jugador jugador : jugadores) {
 			System.out.println("Nombre: " + jugador.getNombre());
 		}
-		System.out.println("##################### FIN Consulta 3 #################################");
+		System.out.println("##################### FIN Consulta 3 ################################# \n");
 	}
 
 	public static void consulta4(String nombreEquipo) {
@@ -78,7 +78,7 @@ public class ConsultasCompeticion {
 		for (Patrocinador patrocinador : patrocinadores) {
 			System.out.println("- " + patrocinador.getNombrePatrocinador());
 		}
-		System.out.println("##################### FIN Consulta 4 #################################");
+		System.out.println("##################### FIN Consulta 4 ################################# \n");
 	}
 
 	public static void consulta5(String nombreEquipo) {
@@ -96,7 +96,7 @@ public class ConsultasCompeticion {
 			System.out.println(
 					"- Deportista: " + jugador.getNombre() + ", Patrocinador: " + patrocinador.getNombrePatrocinador());
 		}
-		System.out.println("##################### FIN Consulta 5 #################################");
+		System.out.println("##################### FIN Consulta 5 ################################# \n");
 	}
 
 	public static void consulta6(String nombreEquipo) {
@@ -116,7 +116,7 @@ public class ConsultasCompeticion {
 		double edadPromedio = (double) totalEdad / jugadores.size();
 		System.out.println("## 6. Calcula y presenta la edad promedio de los deportistas de un equipo determinado. ##");
 		System.out.println("Edad media de los jugadores del quipo: " + nombreEquipo + "= " + edadPromedio + " años");
-		System.out.println("##################### FIN Consulta 6 #################################");
+		System.out.println("##################### FIN Consulta 6 ################################# \n");
 	}
 
 	public static void consulta7() {
@@ -131,7 +131,7 @@ public class ConsultasCompeticion {
 			long cantidadDeportistas = (long) resultado[1];
 			System.out.println("Nacionalidad: " + nacionalidad + ", Cantidad: " + cantidadDeportistas);
 		}
-		System.out.println("##################### FIN Consulta 7 #################################");
+		System.out.println("##################### FIN Consulta 7 ################################# \n");
 	}
 
 	public static void consulta8() {
@@ -142,7 +142,7 @@ public class ConsultasCompeticion {
 		for (Equipo equipo : equipos) {
 			System.out.println("- Equipo: " + equipo.getNombre() + ", Puntos de liga: " + equipo.getPuntosLiga());
 		}
-		System.out.println("##################### FIN Consulta 8 #################################");
+		System.out.println("##################### FIN Consulta 8 ################################# \n");
 	}
 
 	public static void consulta9() {
@@ -169,7 +169,7 @@ public class ConsultasCompeticion {
 			System.out.println("Nombre: " + equipo.getNombre() + ", Puntos: " + equipo.getPuntosLiga());
 		}
 
-		System.out.println("##################### FIN Consulta 9 #################################");
+		System.out.println("##################### FIN Consulta 9 ################################# \n");
 	}
 
 	public static void consulta10() {
@@ -181,7 +181,7 @@ public class ConsultasCompeticion {
 		for (Jugador jugador : nuevosFichajes) {
 			System.out.println("Nombre: " + jugador.getNombre());
 		}
-		System.out.println("##################### FIN Consulta 10 #################################");
+		System.out.println("##################### FIN Consulta 10 ################################# \n");
 	}
 
 	public static void consulta11() {
@@ -190,11 +190,11 @@ public class ConsultasCompeticion {
 		Query query = entityManager.createQuery("SELECT j FROM Jugador j WHERE j.nuevoFichaje = :nuevo", Jugador.class);
 		query.setParameter("nuevo", true);
 		List<Jugador> nuevosCompeticion = query.getResultList();
-		System.out.println("## 10. Enumera todos los fichajes realizados entre los diferentes equipos. ##");
+		System.out.println("## 11. Enumera todos los fichajes realizados entre los diferentes equipos. ##");
 		for (Jugador jugador : nuevosCompeticion) {
 			System.out.println("Nombre: " + jugador.getNombre());
 		}
-		System.out.println("##################### FIN Consulta 11 #################################");
+		System.out.println("##################### FIN Consulta 11 ################################# \n");
 	}
 
 	public static void consulta12() {
@@ -203,7 +203,7 @@ public class ConsultasCompeticion {
 		Long totalDeportistas = (Long) query.getSingleResult();
 		System.out.println("## 12. Realiza un recuento del total de deportistas que participan en la competición. ##");
 		System.out.println("Total de deportistas que participan en la competición: " + totalDeportistas);
-		System.out.println("##################### FIN Consulta 12 #################################");
+		System.out.println("##################### FIN Consulta 12 ################################# \n");
 	}
 
 	public static void consulta13(String equipo1, String equipo2) {
@@ -220,7 +220,7 @@ public class ConsultasCompeticion {
 		for (Patrocinador patrocinador : patrocinadoresComunes) {
 			System.out.println("- " + patrocinador.getNombrePatrocinador());
 		}
-		System.out.println("##################### FIN Consulta 13 #################################");
+		System.out.println("##################### FIN Consulta 13 ################################# \n");
 
 	}
 
@@ -242,7 +242,7 @@ public class ConsultasCompeticion {
 
 		}
 
-		System.out.println("##################### FIN Consulta 14_1 #################################");
+		System.out.println("##################### FIN Consulta 14_1 ################################# \n");
 
 	}
 
@@ -268,7 +268,7 @@ public class ConsultasCompeticion {
 			System.out.println("- Nombre: " + nombre + ", Licencia: " + licencia + ", ID: " + id);
 		}
 
-		System.out.println("##################### FIN Consulta 14_2 #################################");
+		System.out.println("##################### FIN Consulta 14_2 ################################# \n");
 
 	}
 
@@ -297,7 +297,7 @@ public class ConsultasCompeticion {
 			System.out.println("- Licencia: " + licencia + ", Edad: " + edad + ", Nacionalidad: " + nacionalidad);
 		}
 
-		System.out.println("##################### FIN Consulta 14_2 #################################");
+		System.out.println("##################### FIN Consulta 14_2 ################################# \n");
 
 	}
 }

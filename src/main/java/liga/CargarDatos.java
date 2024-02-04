@@ -29,7 +29,11 @@ public class CargarDatos {
 	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	static void cargarDatosBD() {
+		
+		System.out.println("Comienzo de carga de datos en BD orm_competicion");
 		EntityManager entityManager = SimulacionMain.getFactory().createEntityManager();
+		
+		
 		entityManager.getTransaction().begin();
 		// Crear Competicion
 		Competicion competicion1 = new Competicion("LIGA IBERDROLA SUPERDIVISIÓN FEMENINA",
@@ -199,6 +203,7 @@ public class CargarDatos {
 
 		entityManager.getTransaction().commit();
 		entityManager.close();
+		System.out.println("carga de datos en BD orm_competicion completada \n");
 	}
 
 }

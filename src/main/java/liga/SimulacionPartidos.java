@@ -73,6 +73,7 @@ public class SimulacionPartidos {
 			}
 		}
 		updateDBResultados(equiposLiga);
+		System.out.println("Simulacion de jornada terminada. Datos persistidos a la BD orm_competicion \n");
 	}
 
 	private static void updateDBResultados(List<Equipo> equipos) {
@@ -85,11 +86,11 @@ public class SimulacionPartidos {
 			}
 
 			transaction.commit();
-		} catch (Exception e) {
+		} catch (IllegalStateException e) {
 			if (transaction.isActive()) {
 				transaction.rollback();
 			}
-			e.printStackTrace();
+			System.out.println("Fallo en la transaccion, se procede al Rollback"+ e.getMessage());
 		} finally {
 			entityManager.close();
 		}
